@@ -1,0 +1,621 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>语音遥控器说明书</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='语音遥控器说明书'><span>语音遥控器说明书</span></h1><h3 id='一产品介绍'><span>一，产品介绍</span></h3><p><span>本产品是一款语音遥控器，不需要连接WiFi，使用语音即可红外控制空调，电视，机顶盒等需要红外遥控器的家电产品。</span></p><p><span>本产品直接插在USB插座上使用，或者电脑， 机顶盒/电视等USB口上供电使用。根据命令词表，使用说话的方式进行语音控制空调等家电设备。</span></p><p><span>本产品较多功能应用在空调遥控器上，建议重点作为语音空调遥控器，再考虑其他产品的控制使用。</span></p><p><span>*仅兼容使用红外遥控器控制的的家电产品</span></p><p><img src="ppa211_img/ppa211.png" referrerpolicy="no-referrer" alt="PPA211"></p><h3 id='二使用说明'><span>二，使用说明</span></h3><h4 id='通电'><span>通电</span></h4><p><span>产品插入USB口便播报欢迎语，即产品通电正常。</span></p><p><span>产品语音唤醒词为&quot; 你好，木瓜&quot;，唤醒时间为15秒，如果期间没有任何操作，则进入睡眠状态。</span></p><hr /><h4 id='空调-配对'><span>空调-配对</span></h4><p><span>一：</span>
+<span>格力 / 美的 / 海尔 / 长虹 / 奥克斯 / 五款品牌空调可以直接控制，不需要使用遥控器对码学习（如发现控制不够准确，则看第二步操作）</span></p><p><span>二：</span>
+<span>说：“你好，木瓜”，“匹配空调”。根据提示音的步骤，拿起对应的空调遥控器对着语音遥控器按下遥控器开关键，匹配成功后即可实现对空调的语音控制。若听到匹配超时或匹配失败，请按步骤重新进行空调对码匹配</span></p><h5 id='空调词语'><span>空调词语</span></h5><p><span> </span><strong><span>空调语音命令词</span></strong></p><figure><table><thead><tr><th><span>功能</span></th><th><span>语音命令词</span></th></tr></thead><tbody><tr><td><span>开关</span></td><td><span>打开空调/开空调</span></td></tr><tr><td>&nbsp;</td><td><span>关闭空调/关空调</span></td></tr><tr><td><span>模式</span></td><td><span>制冷模式</span></td></tr><tr><td>&nbsp;</td><td><span>加热模式/制热模式</span></td></tr><tr><td>&nbsp;</td><td><span>自动模式</span></td></tr><tr><td>&nbsp;</td><td><span>除湿模式</span></td></tr><tr><td>&nbsp;</td><td><span>送风模式</span></td></tr><tr><td><span>温度</span></td><td><span>16度~30度，如直接说“24度”，“16度”</span></td></tr><tr><td>&nbsp;</td><td><span>温度调到最低</span></td></tr><tr><td>&nbsp;</td><td><span>温度调到最高</span></td></tr><tr><td><span>风速</span></td><td><span>最大风速/最大风</span></td></tr><tr><td>&nbsp;</td><td><span>最小风速/最小风</span></td></tr><tr><td>&nbsp;</td><td><span>自动风速/自动风</span></td></tr><tr><td><span>扫风</span></td><td><span>开启扫风</span></td></tr><tr><td>&nbsp;</td><td><span>关闭扫风</span></td></tr><tr><td><span>定时</span></td><td><span>定时1~12小时，如说 “定时3小时”</span></td></tr><tr><td>&nbsp;</td><td><span>取消定时</span></td></tr></tbody></table></figure><h5 id='空调品牌'><span>空调品牌</span></h5><p><span>  兼容众多空调品牌，其中格力，美的，长虹，海尔，奥克斯免匹对，直接就可以控制</span></p><figure><table><thead><tr><th><span>格力</span></th><th><span>美的</span></th><th><span>长虹</span></th><th><span>海尔</span></th><th><span>奥克斯</span></th></tr></thead><tbody><tr><td><span>海信</span></td><td><span>科龙</span></td><td><span>TCL</span></td><td><span>志高</span></td><td><span>松下</span></td></tr><tr><td><span>日立</span></td><td><span>三菱</span></td><td><span>华菱</span></td><td><span>康佳</span></td><td><span>月兔</span></td></tr><tr><td><span>三星</span></td><td><span>小米</span></td><td><span>大金</span></td><td><span>小天鹅</span></td><td>&nbsp;</td></tr></tbody></table></figure><p><span>*覆盖市场绝大部分的空调机型，如上表列出仅是部分空调品牌</span></p><hr /><h4 id='电视-配对'><span>电视-配对</span></h4><p><span>一：</span>
+<span>需要有简单的配对学习，才能对电视/机顶盒进行语音控制，按照第二步操作执行</span></p><p><span>二：</span>
+<span>说：“你好，木瓜”，“进入学习模式”。根据提示音的步骤，拿起电视/机顶盒遥控器对着语音遥控器，按下遥控器对应的按键，大概的按键学习如下：电视开关键 -&gt; 电视音量加 -&gt; 电视音量减 -&gt; 电视信号源键 -&gt; 机顶盒电源键 -&gt; 电视频道加 -&gt; 电视频道减，当听到提示音“学习完成，请使用”为完成，学习成功后即可实现对电视/机顶盒的语音控制</span></p><h5 id='电视词语'><span>电视词语</span></h5><figure><table><thead><tr><th><span>电视学习命令词</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>进入电视学习</span></td><td><span>-按照提示进行电视匹配</span></td></tr><tr><td><span>下个按键</span></td><td><span>-跳过当前按键学习</span></td></tr><tr><td><span>退出学习模式</span></td><td><span>-退出电视匹配学习</span></td></tr></tbody></table></figure><p><strong><span>电视语音命令词</span></strong></p><figure><table><thead><tr><th><span>功能</span></th><th><span>语音命令词</span></th></tr></thead><tbody><tr><td><span>电视开关</span></td><td><span>打开电视/开电视</span></td></tr><tr><td>&nbsp;</td><td><span>关闭电视/关电视</span></td></tr><tr><td><span>机顶盒开关</span></td><td><span>打开机顶盒/开机顶盒</span></td></tr><tr><td>&nbsp;</td><td><span>关闭机顶盒/关顶盒</span></td></tr><tr><td><span>音量</span></td><td><span>调大音量/增大音量</span></td></tr><tr><td>&nbsp;</td><td><span>调小音量/减小音量</span></td></tr><tr><td><span>频道</span></td><td><span>增加频道</span></td></tr><tr><td>&nbsp;</td><td><span>减小频道</span></td></tr><tr><td><span>信号源</span></td><td><span>切换信号</span></td></tr></tbody></table></figure><hr /><h4 id='风扇-配对'><span>风扇-配对</span></h4><p><span>一：</span>
+<span>需要有简单的配对学习，才能对风扇（或灯具）进行语音控制，按照第二步操作执行</span></p><p><span>二：</span>
+<span>说：“你好，木瓜”，“进入风扇学习模式”。根据提示音的步骤，拿起风扇遥控器对着语音遥控器，按下遥控器对应的按键，大概的按键学习如下：风扇开键-&gt;风扇关键-&gt;摇头键-&gt;风速键-&gt;风类键。当听到提示音“学习完成，请使用”时为完成，学习成功后即可实现对风扇的语音控制，（或灯具）。</span></p><h5 id='风扇词语'><span>风扇词语</span></h5><figure><table><thead><tr><th><strong><span>风扇学习命令词</span></strong></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>进入风扇学习模式</span></td><td><span>-按照提示进行风扇学习</span></td></tr><tr><td><span>下个按键</span></td><td><span>-跳过当前按键学习</span></td></tr><tr><td><span>退出学习模式</span></td><td><span>-退出风扇匹配学习</span></td></tr></tbody></table></figure><p><strong><span>风扇语音命令词</span></strong></p><figure><table><thead><tr><th><span>功能</span></th><th><span>语音命令词</span></th></tr></thead><tbody><tr><td><span>开关</span></td><td><span>打开风扇/开风扇</span></td></tr><tr><td>&nbsp;</td><td><span>关闭风扇/关闭风扇</span></td></tr><tr><td><span>其他</span></td><td><span>风扇摇头</span></td></tr><tr><td>&nbsp;</td><td><span>切换风速</span></td></tr><tr><td>&nbsp;</td><td><span>切换风类</span></td></tr></tbody></table></figure><p>&nbsp;</p><figure><table><thead><tr><th><span>灯具学习命令词</span></th><th><span>说明</span></th></tr></thead><tbody><tr><td><span>进入灯具学习模式</span></td><td><span>-按照提示进行灯具学习</span></td></tr><tr><td><span>灯具控制</span></td><td><span>打开灯光</span></td></tr><tr><td>&nbsp;</td><td><span>关闭灯光</span></td></tr><tr><td>&nbsp;</td><td><span>夜灯模式</span></td></tr></tbody></table></figure><h3 id='三其他说明'><span>三，其他说明</span></h3><h3 id='系统设置'><span>系统设置</span></h3><p><span>唤醒“你好，木瓜”，如觉得播放音量不适,可以控制语音遥控器的产品音量</span></p><p><strong><span>产品音量控制</span></strong></p><figure><table><thead><tr><th><span>大声点</span></th><th><span>-增大产品音量播放</span></th></tr></thead><tbody><tr><td><strong><span>小声点</span></strong></td><td><span>-</span><strong><span>减小产品音量播放）</span></strong></td></tr></tbody></table></figure><p><strong><span>系统初始化</span></strong></p><p><span>如不需要之前匹配的空调或者学习的电视、机顶盒、风扇等指令，则可以进行设备初始化</span></p><figure><table><thead><tr><th><span>设备初始化</span></th><th><span>设备已恢复到出厂设置</span></th></tr></thead><tbody></tbody></table></figure><p>&nbsp;</p><h4 id='故障说明'><span>故障说明</span></h4><p><strong><span>一：学习按键过程：</span></strong>
+<span>如无对应的学习按键，可使用“下一按键”命令词跳过此按键学习</span>
+<span>如按键为最后一个学习按键，可用“退出学习模式”跳过或者退出学习</span>
+<span>&quot;退出学习模式”退出学习之后，之前学习过的按键控制功能并不会清除，可正常使用</span></p><p><strong><span>二：匹配成功不能使用：</span></strong>
+<span>先确保原先遥控器电池是有电量的，再重新匹配，如多次匹配成功，还不能实现控制，请联系客服处理协助处理</span></p><p><strong><span>三：一直匹配失败：</span></strong>
+<span>确认产品与你要控制的设备之间没有隔着障碍物，匹配过程中要避免产品暴露在强光状态下，并且没有别的遥控器在使用，如多次匹配还是失败，请联系客服处理</span></p><p><strong><span>四：匹配成功但部分功能不能使用：</span></strong>
+<span>确认原本遥控器支不支持此功能，若原本遥控器也不支持此功能，则产品也同样不支持，如原遥控器支持此功能，而产品不能实现控制，则可尝试用遥控器进行对码匹配，如重新对码成功后，还是实现不了此功能的控制，请联系客服处理</span></p><p><strong><span>五：语音控制距离短，识别率低：</span></strong>
+<span>多人讲话会容易导致语音识别率低，有其他物品挡住语音遥控器会导致控制失灵，并且产品目前仅支持普通话。</span></p><h3 id='四产品参数'><span>四，产品参数</span></h3><figure><table><thead><tr><th><span>产品型号</span></th><th><span>PPA211</span></th></tr></thead><tbody><tr><td><span>语音识别距离</span></td><td><span>&lt; 8米语音识别</span></td></tr><tr><td><span>红外控制距离</span></td><td><span>&lt; 8米红外发射和接收</span></td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='建议用微信扫一扫点击收藏语音遥控器说明书'><span>建议用微信扫一扫，点击收藏《语音遥控器说明书》，</span></h2></div></div>
+</body>
+</html>

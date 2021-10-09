@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>US516P6-KIT on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/docs/us516p6-kit/</link>
+    <description>Recent content in US516P6-KIT on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Mon, 11 Jan 2021 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/docs/us516p6-kit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>US516P5_项目导入</title>
+        <link>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_project_import/</link>
+        <pubDate>Tue, 23 Mar 2021 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_project_import/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了US516P6-KIT评估板 已详细测试了USUS516P6-KIT评估板的识别率，误识别率等，拾音距离的性能 已确认USUS516P6离线语音控制方案性能可满足导入项目产品中  概要 使用US516P6作为单麦离线语音控制方案的主控，需要了解硬件设计和，结合结构设计，才能使得产品顺利落地。US516P6项目导入前，根据下文的描述需要了解以下几点:
+ US516P6的硬件框架的确定 US516P6的固件获取, 烧录和更新 US516P6的命令词定义和UART串口指令的定义 麦克风的外壳结构的声学设计 US516P6的产测需具备的设备和测试的流程  US516P 硬件基本框架 US516P6 芯片基本特性如下:
+ 温度等级-20°C到 85°C QSOP24 封装 5V电源输入，60mA电流功耗 内置了16Mbit Flash 订购型号：US516P6；  US516P6 硬件系统系统如下图。根据是否需要播放播报音进行选择运放芯片。
+固件功能说明 US516P6　内置了离线语音识别模型库，支持最多150个语音命令词，最多10个唤醒词，支持语音播报，和识别后串口指令输出。
+US516P6　内置了DSP核心和MCU核心，DSP核心主要是完成语音识别，MCU核心主要是做逻辑控制使用。绝大多是通过软件定义编程实现功能，形成可烧录的固件
+木瓜电子可以为用户定制唤醒词，语音命令词，播报音，以及串口指令，用户在向木瓜电子申请定制固件前，需要根据我司提供的《US516P6离线语音控制_用户功能需求采集.txt》文档进行补充，通过邮件call_center@pawepaw.hk返回提供给研发部
+其文档要求提供的内容有：
+US516P6_KIT购买用户需要提供的内容
+1，唤醒词
+2，命令词
+3，播报语
+4，输出的串口指令（默认是9600波特率，可选择）
+提供完毕信息后，没有特殊的要求，一般在几个工作日内我司会安排研发人员设计固件，并且释放出来。
+语音识别性能说明 关于识别率，基于我们的测试结果，并且根据项目经验，我们能够写出的标称值为
+  高识别率：5米远距离识别，高达95%识别率
+  低误识别：&amp;lt; 1 false in 48 hours
+  但是并不是每个语音命令词都会同样的识别性能，为了能够达到比较好的识别性能，在定义和选择语音命令词的时候我们建议以下：
+  尽量不要选择叠词作为唤醒词或者语音命令，如“木瓜木瓜”，“木木瓜瓜”
+  尽量选择开音的词语做作为识别词，如ａ音，ａｏ音，ａｉ音等等，尽量不要选择闭音和鼻音的词语，其中的原因是开音的词语声音能量比较大，识别率便高
+  每个词语的长度尽量在3~5个字，太多或者太少都会不利于识别率的提高</description>
+      </item>
+      
+      <item>
+        <title>US516P5_硬件设计</title>
+        <link>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_hw_design/</link>
+        <pubDate>Fri, 19 Mar 2021 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_hw_design/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了US516P6-KIT评估板，且查阅US516P6-KIT_硬件使用 已详细测试了US516P6-KIT评估板的识别率，误识别率等，拾音距离的性能 已详细了解US516P6项目情况，且已查阅US516P6-KIT_项目导入 已确认US516P6离线语音控制方案性能可满足导入项目产品中  US516P6 datasheet 导读 查看Unisound-蜂鸟M(US516P6) SOC产品手册.pdf，其US516P6描述的为裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性  商用温度等级（-20 °C to 85 °C） QSOP24 封装 60mA典型工作电流，5V供电 内置了16Mbit Flash 3V3 I/0 高电平 内部集成了LDO 和两路ADC和DAC  电源 根据datasheet得知 US516P6 仅需5V电源供应，其芯片内置部分LDO，无需在外围再添加其他电源设计
+I/O 映射 US516P6的逻辑I/O接口的功能使用由固件定义，datasheet 无描述I/O 功能使用，需参考木瓜电子原理来选择使用特定的I/O map。
+时钟信号 US516P6外部需要12MHz无源晶振接入作为启动晶振，无再需要其他晶体。
+音频 US516P6 内部集成了1路ADC 支持驻极体麦克风输入, SNR≥94db；内部集成了2路DAC ,支持Line-out是指输出播报音频
+原理图设计 US516P6外部设计比较简单，整体看需要主控芯片US516P6芯片，12MHz无源晶振，运放器件和麦克风电路即可。其参考设计如下图
+主控和PIN说明 US516P6是一个高度集成的语音芯片，有逻辑控制核心和DSP 核心运行语音识别模型。所以US516P6需要烧录对应的语音模型和逻辑控制程序固件才能完全运转起来。根据参考原理的图的说明，这里首先列举一下US516P6的PIN的说明，如下
+   PIN 脚 功能脚 软件定义 功能描述     1 GPIO_B0 US_TCK 专用JTAG烧录用的US_TCK功能脚，不建议其他用途   2 GPIO_B1 US_TMS 专用JTAG烧录用的US_TMS功能脚，不建议其他用途   3 GPIO_A25 - GPIO保留使用，可以编程定义使用   4 GPIO_A26 - GPIO保留使用，可以编程定义使用   5 GPIO_A27 - GPIO保留使用，可以编程定义使用   6 GPIO_A28 US_SPK_MUTE 喇叭的mute信号，控制运放的是使能信号   7 GPIO_B6 US_UART1_RXD US516P6的UART的RX接收引脚   8 GPIO_B7 US_UART1_TXD US516P6的UART的TX发送引脚   9 GPIO_B8 US_UART_TXD Log打印输出，便于打印使用，需要debug固件来配合   10 DAC_X - US516P6播报音line-out单声道输出   11 AVSS - 芯片系统的模拟地   12 VMID - 1.</description>
+      </item>
+      
+      <item>
+        <title>US516P5-KIT_硬件使用</title>
+        <link>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6-kit_usage/</link>
+        <pubDate>Wed, 03 Feb 2021 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6-kit_usage/</guid>
+        <description>概要 US516P6-KIT是基于云知声语音芯片US516P6所设计的评估板，用户能够使用US516P6-KIT进行快速测试和评估是否吻合项目需求。
+US516P6 是云知声针对大量纯离线控制场景和产品最新推出的低成本纯离线语音识别芯片，依托于云知声在语音识别技术上的积累和算法的不断优化和创新，离线识别算法与芯片架构深度融合，为用户提供超低成本的离线语音识别方案，可广泛且快速应用于智能家居，各类智能小家电，86 盒，玩具，灯具等需要语音操控的产品。
+US516P6-KIT支持 150 条本地指令离线识别，家居场景5米距离 95%识别率，支持带口音的普通话，低误唤醒率 (&amp;lt; 1 false in 48 hours)。
+US516P6-KIT评估板配套了喇叭播报接口，麦克风端子，电源电子，以及UART串口端口。
+版本    产品版本 修改 发布时间     US516P6-KIT v1 初次发布 2020年4月13日    特点   高识别率：5米远距离识别，高达95%识别率
+  低误识别：&amp;lt; 1 false in 48 hours
+  支持高达150个命令词条，支持纯中文，纯英文命令词条
+  提供标准女声、甜美女声、可爱女声、台湾女声、标准男声、女童声、男童声七种音色可选
+  单麦解决方案，极简外围电路，高性价比离线语音控制方案
+  支持UART串口输出识别指令
+  规格   云知声 US516P6 主控，内置离线语音识别，语音播报音
+  单路驻极体麦克风
+  SNR 65dB</description>
+      </item>
+      
+    
+  </channel>
+</rss>

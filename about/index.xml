@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>about on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/about/</link>
+    <description>Recent content in about on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Tue, 28 Jan 2020 00:38:59 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>公司介绍</title>
+        <link>https://docs.pawpaw.ltd/about/about_us/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/about/about_us/</guid>
+        <description>本子系统(docs.pawpaw.ltd)是木瓜电子(www.pawpaw.hk)的文档系统网址的补充，为协助用户对木瓜电子开发的开发板评估板的快速使用而生
+关于我们 深圳市木瓜电子科技有限公司（“木瓜电子”）是一家专注于提供音频技术和音频芯片供应服务的芯片代理商和音频方案商。
+木瓜电子(www.pawpaw.hk)是XMOS的代理商和技术提供商，于2015年，经过多方资源整合打造国内最专业的XMOS技术支持团队，拥有国内最专业的XMOS技术人才，英国XMOS原厂授权麦克风阵列产品线国内唯一的合作伙伴。
+关于XMOS XMOS(www.xmos.ai)是音频领域芯片供应的领导者，专注提供音频接口(USB AUDIO)和音频DSP算法，目前已经成熟向市场提供了XVF3000和XVF3500 4路麦克风阵列，以及XVF3510 2路麦克风阵列完整解决方案，应用语音识别和会议通话等产品中。
+在XMOS网址找到木瓜电子 XMOS网站链接如下可以找到木瓜电子网站入库：https://www.xmos.ai/design-support</description>
+      </item>
+      
+      <item>
+        <title>商务合作</title>
+        <link>https://docs.pawpaw.ltd/about/business/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/about/business/</guid>
+        <description>深圳市木瓜电子科技有限公司
+地址：深圳市福田区车公庙天安创新科技广场一期B座507B
+通讯号码     号码 类型     座机 0755-83249131 USB AUDIO, 麦克风阵列    0755-83972095 USB AUDIO, 麦克风阵列   手机 13714668010 USB AUDIO, 麦克风阵列，离线语音    15013658786 USB AUDIO, 麦克风阵列    商务邮箱      类型     邮箱 sales@pawpaw.hk USB AUDIO, 麦克风阵列，离线语音，芯片    </description>
+      </item>
+      
+      <item>
+        <title>技术支持</title>
+        <link>https://docs.pawpaw.ltd/about/support/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/about/support/</guid>
+        <description>深圳市木瓜电子科技有限公司
+地址：深圳市福田区车公庙天安创新科技广场一期B座507B
+技术支持号码     号码 类型     座机 0755-83996485 USB Audio ,XMOS , Savetech   座机 0755-82815115 麦克风阵列，离线语音    技术支持邮箱      类型     邮箱 support@pawpaw.hk USB AUDIO, 麦克风阵列，离线语音，芯片    </description>
+      </item>
+      
+    
+  </channel>
+</rss>

@@ -1,0 +1,2 @@
+# set device descriptor serial number from one stored in flash
+SET_USB_SERIAL_NUMBER 1

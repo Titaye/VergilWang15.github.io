@@ -1,0 +1,3 @@
+
+xflash --no-compression --boot-partition-size 1048576 --factory app_xvf3510_ua_v4_4_0.xe --data data_partition_factory_user_define_xvf3510_v4_4_0.bin -o xvf3510_pp_flash_qspi_factory.bin
+

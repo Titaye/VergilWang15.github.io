@@ -1,0 +1,27 @@
+These are the connections needed from the XVF3510 to the 
+Raspberry Pi to allow direct SPI booting. Always use this 
+option for booting the XVF3510-UA. 
+
+               RPi Connector
+                   01  02
+                   03  04
+                   05  06 GND*
+                   07  08 BOOT_SEL
+              GND* 09  10 RST_N
+                   11  12
+                   13  14 GND*
+                   15  16
+                   17  18
+          SPI_MOSI 19  20 GND*
+          SPI_MISO 21  22
+          SPI_CLK  23  24 SPI_CSn
+              GND* 25  26
+                   27  28
+                   29  30 GND*
+                   31  32
+                   33  34 GND*
+                   35  36
+                   37  38
+              GND* 39  40
+
+*: Not all ground connections need to be connected.

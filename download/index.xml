@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具和应用下载 on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/download/</link>
+    <description>Recent content in 工具和应用下载 on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/download/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>评估板资料下载页</title>
+        <link>https://docs.pawpaw.ltd/download/tool_and_app_download/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/download/tool_and_app_download/</guid>
+        <description>工具和软件 以下工具均为第三方的免费工具，木瓜电子不对这些工具软件有任何商业行为    工具名 描述 下载     Audacity Audacity是一款开源免费录音播放工具软件，用于测试音频使用，能够实现多通道录音和播放 audacity-win-2.4.2.zip   usbdeview Usbdeview是一款免费的查看windows操作系统的USB设备枚举信息的工具软件 usbdeview.zip   Zadig zadig是是一款安装windows USB 驱动免费工具软件 zadig-2.5.zip    评估板资料包 每个评估板对应的资料在硬件使用说明都能下载
+   评估板/开发板 描述 下载     P3510-2MIC XMOS XVF3510 DSP 主控芯片，开源 , 内置麦阵算法 p3510.zip   PXVF3500-KIT XMOS XVF3500 DSP 主控芯片，开源 , 内置麦阵算法 pxvf3500.zip   PXVF3000-KIT XMOS XVF3000 DSP 主控芯片，开源 , 内置麦阵算法 pxvf3000.zip   PXUA216MB-DL2 USB 16路数字麦克风采集，不开源，无内置麦阵算法 pxua216mb.</description>
+      </item>
+      
+    
+  </channel>
+</rss>

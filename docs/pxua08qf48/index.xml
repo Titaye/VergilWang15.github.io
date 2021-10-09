@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXUA08QF48 on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/docs/pxua08qf48/</link>
+    <description>Recent content in PXUA08QF48 on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Mon, 11 Jan 2021 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/docs/pxua08qf48/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>PXUA08QF48_硬件设计</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_hw_deseign/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_hw_deseign/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXUA08QF48，且查阅PXUA08QF48_硬件使用 已查阅了XU208-128-QF48-C10(后续简称XU208)的datasheet和参考设计 已确认PXUA08QF48 USB Audio方案性能可满足导入项目产品中  XU208 datasheet 导读 查看XU208-128-QF48-Datasheet_1.15，其描述的为XU208裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性  商用温度等级（0 °C to 70 °C） QFN-48 封装 170mA(3.3V &amp;amp; 1.0V)典型工作电流，500mW左右（固件运行） I/O 驱动能力为4mA 订购型号：XU208-128-QF48-C10； 丝印：U30870C10  电源 根据datasheet的最小系统框图，XU208的需要两路电压供应，3V3和1V0, 其中3V3提供给I/O, USB , Flash等外设使用，1V0提供给XU208逻辑核心使用。
+其两路电压时序要求为3V3先上电，稳定后，1V0后上电。
+复位检测 XU208需要外部有复位检测芯片，可以选择单独侦测 3V3或者1V0，以避免在电压不正常时，芯片无法复位来运行固件。
+Flash XU208需要外置 Flash（SPI Flash或者QSPI Flash,类似MX25l4006e或者GD25Q16C，PXUA08QF48评估板使用的是SPI Flash），其主要是存储固件，所以项目得预先烧录固件方能使用。
+   类型 管脚定义 传输速度     SPI Flash SCLK, CS, IO0, IO1, WP, HOLD 240Mbits/s   QSPI Flash SCLK, CS, IO0, IO1, IO2, IO3 480Mbits/s     PXUA08QF48使用的是SPI连接方式，推荐客户优先使用SPI Flash   使用QSPI Flash烧录器烧录需要配置QE=1，并且勾选写入配置进行烧录。以IS25LP016D型号FLASH为例，其QSPI烧录步骤如下截图：（区分于SPI Flash,SPI Flash不需要勾选写入配置，即截图步骤5勾选为空）</description>
+      </item>
+      
+      <item>
+        <title>PXUA08QF48固件说明</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_firmware_desc/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_firmware_desc/</guid>
+        <description>固件命名 XMOS固件命名方式参考如下，如2i0o2xsxxxd_dfu.bin，该固件表示Audio Class 2，输入通道数为0，输出通道数为2，不支持MIDI，支持SPDIF OUT，不支持SPDIF IN,ADAT,支持DSD输出。
+ Audio Class: 1 or 2
+Input enabled: i (channelcount)
+Output enabled: o (channelcount)
+MIDI enabled: m, disabled: x
+SPDIF out enabled: s, disabled: x
+SPDIF in enabled: s, disabled: x
+ADAT out enabled: a, disabled: x
+ADAT in enabled: a, disabled: x
+DSD out enabled: d, disabled: x
+ 固件列表   2i0o2xsxxxd_dfu.bin(HIFI 声卡)
+ PCM44.1KHz~768KHz@32bit DSD64~DSD512，DOP64~DOP256 SPDIF OUT 192KHz@24bit    2i2o2mxxxxx_dfu.</description>
+      </item>
+      
+      <item>
+        <title>USB Audio_项目导入</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_proj_import/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_proj_import/</guid>
+        <description>用户需要确认以下内容，以方便阅读下文
+ 已拥有PXUA08QF48评估板，并且已经查阅了PXUA08QF48_硬件使用 已了解熟悉USB Audio方案 已有或已了解熟悉USB Audio驱动（参考XMOS USB Audio驱动说明文档） 已有XU208软件烧录工具(XMOS专用XTAG或者flash烧录器)  概要 使用XU208-128-QF48-C10（后面统称XU208）作为USB Audio方案的主控，需要了解硬件设计和软件设计，结合木瓜已有固件，搭配PXUA08QF48评估板使用。根据我司现有的XMOS USB Audio方案，可以使用XU208来做HIFI声卡，专业录音声卡，MIDI声卡，多通道等应用。
+XU208项目导入前，根据下文的描述需要针对以下几点来进行XMOS芯片项目导入：
+  XU208硬件框架的确定
+  用户需要梳理方案的应用场景
+  USB Audio功能需求的确定
+  XU208固件的获取，烧录和更新
+  产品量产和测试
+  USB Audio ASIO 低延时驱动的获取（针对Windows系统）
+  XU208应用框架确定 针对XMOS USB Audio方案应用中，需要基本了解XU208芯片特性和USB Audio方案的应用场景，一般会应用到如下几个应用场景，其中包括但不限于：USB HiFi声卡，专业录音声卡，USB多通道声卡等应用，用户需要根据需求来选择对应的应用框架进行项目导入。
+XU208芯片特性 XU208芯片基本特性如下，其中USB Audio协议和I2S,TDM,S/PDIF 等音频接口，和逻辑控制的功能属于软件编程定义内容，datasheet仅表示XU208的硬件特性。
+ 商用温度等级（0 °C to 70 °C） 3V3 &amp;amp; 1V0 双路电源供应 8个实时逻辑核心，128KB内部SRAM 芯片内部集成USB PHY 2.0，完全符合USB 2.0规范 QFN48封装 170mA 典型工作电流（3V3&amp;amp;1V0）  USB HIFI声卡 USB Hi-Fi 声卡的产品形态类似如，数字功放，桌面解码器，便携式高清播放器等等，一般使用USB数据线来传输和解析高质量，高采样率的音频文件进行解码播放。</description>
+      </item>
+      
+      <item>
+        <title>PXUA08QF48_硬件使用</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_usage/</link>
+        <pubDate>Thu, 10 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_usage/</guid>
+        <description>概要 PXUA08QF48 是 XMOS USB Audio 高性能和多功能评估板，主要实现了UAC 2.0(USB Audio Class 2.0)输出高清解析音频, 所用的XMOS 芯片为XU208-128-QF48-C10设计成 XMOS USB AUDIO 高性能方案。
+XMOS USB Audio 方案提供兼容全速和高速的USB 2.0接口的USB AUdiO 声卡设备，基于XU208-128-QF48, PXUA08QF48评估板支持UAC 2.0和UAC 1.0 ;在USB 2.0 异步模式中，能够支持高达768 KHz的采样率
+PXUA08QF48 使用分层设计方式, 开发板主要为数字部分,没有音频模拟部分, 提供USB , I2S , TDM , DSD , MIDI ,S/PDIF等数字接口,开发预留出两排排针,以吻合多功能使用, 可以搭配木瓜电子的ES9038Q2M评估板,也可以搭配其他高端DAC 如AK4497 ,CS43198等;
+PXUA08QF48 开发板能够实现USB声卡解码输出 768KHz 采样率和支持DSD Native; 同时支持多种数字音频接口和多个通道输入输出, 配套提供使用USB 进行更新的不同功能的多个固件, 能够协助用户进行USB Audio多种项目评估.
+版本    产品版本 修改 发布时间     PXUA08QF48-9018 V1 EOL(停产) 2017年6月13日   PXUA08QF48 V2 分层氏设计, 分离出模拟音频部分,可搭配多种模拟板 2018年5月19日    特点   支持USB Audio Class 2.</description>
+      </item>
+      
+    
+  </channel>
+</rss>

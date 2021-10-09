@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXVF3500-KIT on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/docs/pxvf3500-kit/</link>
+    <description>Recent content in PXVF3500-KIT on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>XVF3500项目导入</title>
+        <link>https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/</link>
+        <pubDate>Mon, 07 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了pxvf3500-KIT 已详细了解XVF3500 内置的前端算法AEC , BF , NS, AGC等 已使用pxvf3500-KIT已经通过vfctrl_usb工具调试出理想的参数 已确认XMOS XVF3500 4路麦克风阵列方案性能可满足导入项目产品中  概要 使用XVF3500作为线条形4麦阵列方案的主控，需要了解硬件设计和软件设计，结合结构设计，才能使得产品顺利落地。并且根据我司现有的XMOS麦克风阵列方案，建议使用XVF3500来做视频通话产品(Comms 方向)
+如需要做语音识别（ASR方向）建议使用我们2麦阵列方案XVF3510方案。 XVF3500项目导入前，根据下文的描述需要了解以下几点:
+ XVF3500的硬件框架的确定 熟悉USB的对产测和测试的作用 XVF3500的固件获取, 烧录和更新 XVF3500 DSP算法参数 麦克风阵列的外壳结构的声学设计 XVF3500的产测需具备的设备和测试的流程 XVF3500过认证需要提前准备的工作  XVF3500 硬件基本框架 XVF3500芯片基本特性如下:
+ 商用温度等级（0 °C to 70 °C） FBGA 167 封装 685mA典型工作电流，1W左右（固件运行） I/O 驱动能力为4mA 订购型号：XVF3500-FB167-C； 丝印：VSM05C  XVF3500 硬件系统最小系统如下图。XVF3500 线形4路麦克风阵列根据音频传输接口的不同，大体分为如下三种硬件框架。用户根据项目需求选择其一，并且以确定硬件上是否需要设计ADC和DAC。
+使用USB连接Host | USB_in&amp;amp;out Host主机的音频传输都通过XVF3500的USB来输入输出，XVF3500作为一个USB Audio声卡设备，产品应用一般为外置的拾音设备。
+其框架如下图，其中：
+ XVF3500前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过USB接口输入给Host Host播放声音时通过USB声卡播放输出，XVF3500为声卡设备，XVF3500的AEC参考信号在USB音频播放传输过程中获取 XVF3500 USB UAC1.0包含传输音频输入输出、vfctrl_usb和dfu_usb，UAC输入输出的音频格式为16KHz/48KHz
+  使用USB连接Host | Analog_ref XVF3500通过USB输入声音给host主控，Host主控提供模拟AEC参考信号给XVF3500。</description>
+      </item>
+      
+      <item>
+        <title>PXVF3500-KIT_dsp_描述</title>
+        <link>https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/</link>
+        <pubDate>Fri, 04 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXVF3500-KIT 已获取到PXVF3500-KIT的资料包 已能够进行使用dfu_usb和vfvtrl_usb工具， 已详细了解XMOS 的XVF3500-DSP-Databrief文档 已详细了XVF3500 内置的前端算法AEC , BF , NS, AGC等  下文将不再对XVF3500-DSP-Databrief里的专业术语进行解释，重点是描述DSP参数的意义和数值的方向
+PXVF3500-KIT DSP 初始参数 PXVF3500-KIT 使用XVF3500-DSP-Databrief的默认参数，可以通过查阅文档和使用vfctrl_usb 可以读取PXVF3500-KIT的DSP参数。且PXVF3500-KIT每次重新上电，所有DSP 参数都重置为初始值
+1  vfctrl_usb HPFONOFF   其重新上电后首次打印输出的内容为初始值,
+1  HPFONOFF:3   其他参数使用vfctrl_usb工具读取方式同理
+查阅文档XVF3500-DSP-Databrief的从page 14开始的参数描述中可以获取初始参数
+DSP 参数写入和认证 使用vfctrl_usb 工具进行写入DSP 参数，如键入指令：
+1  vfctrl_usb HPFONOFF 2   PXVF3500-KIT可以实时更改HPFONOFF参数为3，并且打印输出如下，
+1  HPFONOFF:3   键入指令时需要注意空格的输入，同时查阅XVF3500-DSP-Databrief里HPFONOFF描述的的范围为[0..3] ，其值的类型为INT型(整数型)。
+确认写入完成了后，可以使用audaciy或者其他录音软件实时查看vfctril_usb工具修改DSP参数的效果。同时建议使用系统声卡监听功能进行实时侦听修改效果。使用3.5mm耳机插入PC电脑的耳机孔后，参考下图，进行如下操作，
+ 在录音栏项，右键 XMOS VocalFusion St(UAC1.0) -&amp;gt; 点击属性 选中侦听此设备 在通过此设备中播放下拉栏中-&amp;gt;选择PC电脑内置的播放声卡 必须使用耳机插入PC的3.5mm耳机口进行侦听，否正会产生啸叫  DSP 参数简单介绍 HP 高通滤波 XVF3500-DSP-Databrief文档描述的高通滤波器仅有一组参数HPFONOFF，其最高值为是180Hz，如将PXVF3500-KIT作为会议设备（Comms输出）使用，建议设置HPFONOFF为3。如作为语音识别（ASR）,该值可以使用初始值</description>
+      </item>
+      
+      <item>
+        <title>PXVF3500-KIT_硬件使用</title>
+        <link>https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/</guid>
+        <description>概要 PXVF3500-KIT是针对XMOS的XK-VF3500-L33 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-VF3500-L33 开发板，所用的DSP芯片为XVF3500。XMOS最新更新发布的XVF3500的固件完全适用于PXVF3500-KIT。
+PXVF3500-KIT为4麦线条型阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+PXVF3500-KIT内置了立体声回音消除（AEC） , 波束程序（BF），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。
+版本    产品版本 修改 发布时间     PXVF3500-KIT v1 初次发布 2018年8月6日    特点   前向180度远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB Control 调试
+  线条型（Linear）4路麦克风阵列
+  支持3.5mm耳机孔作为模拟AEC参考信号
+  支持3.5mm耳机孔作为USB声卡播放
+  DSP 算法和特点</description>
+      </item>
+      
+      <item>
+        <title>XVF3500硬件设计</title>
+        <link>https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/</guid>
+        <description>阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了pxvf3500-KIT，且查阅pxvf3500-KIT_硬件使用 已详细了解XVF3500 内置的前端算法AEC , BF , NS, AGC,，且已查阅pxvf3500-KIT_dsp_描述 已查阅本站XVF3500项目实施落地 已查阅了XVF3500的datasheet和参考设计 已确认XMOS XVF3500 4路麦克风阵列方案性能可满足导入项目产品中  XVF3500 datasheet 导读 查看XVF3500-FB167-Datasheet_1.2.pdf，其描述的为XVF3500裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性  商用温度等级（0 °C to 70 °C） FBGA 167 封装 685mA典型工作电流，1W左右（固件运行） I/O 驱动能力为4mA 订购型号：XVF3500-FB167-C； 丝印：VSM05C  电源 根据datasheet的最小系统框图，XVF3500的需要两路电压供应，3V3和1V0, 其中3V3提供给I/O, USB , Flash等外设使用，1V0提供给XVF3500逻辑核心使用。
+其两路电压时序要求为3V3先上电，稳定后，1V0后上电。
+复位检测 XVF3500需要外部有复位检测芯片，可以选择单独侦测 3V3或者1V0，以避免在电压不正常时，芯片无法复位来运行固件。
+QSPI Flash XVF3500需要外置QSPI Flash（类似GD25Q16或者IS25LP016D），其主要是存储XVF3500固件，所以XVF3500项目得预先烧录固件才能启动运行4路麦克风阵列算法。
+使用QSPI Flash烧录器烧录XVF3500需要配置QE=1的烧录方式。
+BOOT MODE XVF3500的需要读取QSPI Flash芯片程序来启动，根据框图连接XVF3500和Flash时，需要确保QSPI_CS引脚上拉1K电阻，以实现boot mode是由XVF3500芯片读取加载内部的QSPI Flash固件。
+I/O 映射 XVF3500的逻辑I/O接口的功能使用由固件定义，datasheet 无描述I/O 功能使用，需参考木瓜电子或者XMOS官方提供的的原理来选择使用特定的I/O map。
+时钟信号 XVF3500外部需要24MHz有源晶振接入作为启动晶振，接入到CLK 引脚，而音频时钟16KHz 和48KHz采样率仍需要一个外部的12.2888MHz音频时钟或者晶体接入作为I2S或者PDM麦克风的MCLK时钟使用。
+原理图和PCB 根据我司或者XMOS官方的提供的参考原理，结合XVF3500的datasheet最小系统。用户可以比较轻易完成XVF3500的最小系统设计，包含了电源，时钟，启动上拉等。</description>
+      </item>
+      
+    
+  </channel>
+</rss>

@@ -1,0 +1,14 @@
+注意fireware提供两种文件：
+1. 直接烧录到flash中的bin文件，文件名中带bin名字
+2. 通过USB升级的bin文件，文件名中带dfu名字
+
+注意其中
+
+app_usb_aud_mic_array_2i8o2_LINE_IN_16K_bin.bin：flash烧录文件，使用公版驱动，18路输入，2路输出，采样率16K
+app_usb_aud_mic_array_2i8o2_LINE_IN_16K_dfu.bin：usb升级文件，使用公版驱动，18路输入，2路输出，采样率16K
+app_usb_aud_mic_array_2i8o2_LINE_IN_48K_bin.bin：flash烧录文件，使用公版驱动，18路输入，2路输出，采样率48K
+app_usb_aud_mic_array_2i8o2_LINE_IN_48K_dfu.bin：usb升级文件，使用公版驱动，18路输入，2路输出，采样率48K
+app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_16K_bin.bin：flash烧录文件，使用FIIO(飞傲厂商)驱动，18路输入，2路输出，采样率16K
+app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_16K_dfu.bin：usb升级文件，使用FIIO(飞傲厂商)驱动，18路输入，2路输出，采样率16K
+app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_48K_bin.bin：flash烧录文件，使用FIIO(飞傲厂商)驱动，18路输入，2路输出，采样率48K
+app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_48K_dfu.bin：usb升级文件，使用FIIO(飞傲厂商)驱动，18路输入，2路输出，采样率48K

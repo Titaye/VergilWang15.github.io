@@ -1,0 +1,80 @@
+Release Notes: XVF3510-UA and XVF3510-INT firmware version 4.4.0 (release candidate 1: build 210320 181801)
+==============================================================================================================
+
+
+Introduction
+============
+
+This note describes the version 4.4.0 release of the XVF3510 firmware. Except where explicitly mentioned, these release notes are relevant to both the -INT and -UA variants of the release. This version can be installed as a new factory image or as a DFU upgrade over versions 4.0.0 and onwards. This release is not compatible as a DFU upgrade over factory images prior to version 4.0.0.
+
+
+How do I know if I have this software?
+======================================
+
+Using the appropriate vfctrl for your host (MAC, Win32, Linux or Pi) and control interface (i2c or usb) do:
+
+GET_VERSION
+Should respond: v4.4.0
+
+GET_BLD_HOST
+Should respond: Jenkins
+
+GET_BLD_REPO_HASH
+Should respond: 126b44
+
+GET_BLD_XGIT_VIEW
+Should respond: sw_xvf3510_master
+
+GET_BLD_XGIT_HASH
+Should respond: b70280
+
+GET_BLD_MODIFIED
+Should respond: false
+
+If all of these results are as given above you have the official XVF3510 firmware version 4.4.0 release. All of these results are given within the first few lines of a parameter dump (the -d option for vfctrl).
+
+
+What's in this release?
+=======================
+
+This release contains firmware binaries, host executables, and data partitions. Source code to allow the recompilation of host code and data partitions is also included.
+
+
+What's new in Version 4.4.0?
+============================
+
+The following list summarises changes that may be observed when using Version 4.4.0 of this firmware in comparison to the previously released versions. A full changelog is also included in the release package.
+
+Introduce support for XS3
+-------------------------
+
+Several source code libraries can be compiled for both XS2 and XS3, see the changelog for a detailed list of changes to source code libraries.
+
+Improvements for AEC
+--------------------
+
+Applying window before adaptation to remove discontinuities on frame boundaries on the impulse response. This will improve the performance in cancelling the echo produced by Skype ringtone.
+
+Improvements for AGC
+--------------------
+
+Update loss-control constants in Comms output to soften attenuation during double-talk.
+
+Known issues in this release
+============================
+
+1. When used in a hybrid system implementing processed audio to the host over USB but reference audio over I2S, the XVF3510-UA still implements both USB audio in and out channels. This is known to cause issues with some USB host operating systems due to default audio path switching.
+Workaround:
+Configure your host to explicitly output audio to the correct audio interface.
+
+2. The data image generation loses the sign bit on Raspberry Pi.
+Workaround:
+Data image generation should be done on desktop host, not Raspberry PI as the MSB of the Flashing register needs to be set.
+
+3. The output filters are configured for 48kSamples/s operation.
+Workaround:
+16kSamples/s outputs should utilise coefficients for a 48k Samples/s filter and should expect outputs to be directly decimated by three.
+
+4. The serial number feature is not supported by the INT build.
+Workaround:
+None.

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notes on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/notes/</link>
+    <description>Recent content in notes on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Tue, 28 Jan 2020 00:08:29 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>XMOS USB audio 驱动说明</title>
+        <link>https://docs.pawpaw.ltd/notes/xmos_uac_2_driver_description/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/notes/xmos_uac_2_driver_description/</guid>
+        <description>概要 木瓜电子对外提供的 XMOS USB Audio 方案可以应用在多种产品中，其中包括但不限于HiFi随身听，HiFi桌面解码器，USB 专业录音声卡， USB 多通道调音台, USB 麦克风阵列采集。XMOS USB Audio 方案中主要使用 XMOS 的XU208-128-QF48-C10 和XU216-512-TQ128-C20 这两款芯片来作主控芯片，所有产品的一个共同点就是使用 USB UAC 2.0协议来进行音频的传输。用户需要做USB 声卡相关产品的时候需要了解XMOS USB Audio相关的驱动，本文主要讲解 USB Audio 驱动相关说明。
+XMOS USB Audio 方案介绍 XMOS USB Audio 方案的协议中兼容了 USB Audio Class 1.0（UAC 1.0）跟 USB Audio Class 2.0（UAC 2.0）协议，XMOS 的USB UAC音频传输协议都是完全遵循USB IF （USB 国际联盟） 的UAC 2.0和UAC 1.0的协议标准。
+其中XMOS 的 USB Audio 方案，能够实现的功能如下表：
+   接口 功能参数     USB USB USB 2.</description>
+      </item>
+      
+      <item>
+        <title>XMOS XTAG 转接板</title>
+        <link>https://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/notes/xmos_xtag_adapter_board/</guid>
+        <description>XMOS的XTAG调试工具为XMOS芯片专用调试和烧录工具，包含JTAG，复位，在线调试和烧录程序，还有高级调试，xtag对于XMOS芯片开发都必不可少的。
+木瓜电子提供转接板主要是是为了减小XTAG的占用面积，建议用户在硬件设计的时候使用2x5 1.27mm的端子来代替XTAG的2X10 2.54mm的大端子，以减小PCBA面积和减少layout走线。
+转接原理如下图
+其实物如下图，用户需要自行焊接转接板的端子，并且遵循其搭建过程
+XTAG硬件用户需自行购买，而XTAG转接板所需的物料器件，木瓜电子可免费提供给到用户，由用户自行焊接</description>
+      </item>
+      
+      <item>
+        <title>XMOS 麦克风阵列选型说明</title>
+        <link>https://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/notes/xmos_array_microphone_selection/</guid>
+        <description>概要 XMOS 芯片现有平台内置麦克风阵列算法的芯片信号为XVF3000,XVF35000,XVF3510。内置麦克风阵列算法，包含回音消除，波束成形，语音增强，噪声抑制等算法，接口带有USB和I2S等，仅支持PDM数字麦克风。这几个芯片平台都配有相应的评估板，其中的平台区别如下文描述，用户根据需求，自行选择。
+区别    属性 XVF3000 XVF3500 XVF3510     成本 高 高 低   封装 TQFP-128 FBGA-167 QFN-60   功耗 ~700 mW ~1 W ~600 mW   Flash 内置QSPI Flash 外置QSPI Flash 外置QSPI Flash   麦克风数量 4路PDM 数字麦克风 4路PDM 数字麦克风 2路PDM 数字麦克风   阵型 圆形/线形 4麦 线形 4麦 线形 2麦   发布时间 2017 2018 2019   开源情况 代码开源，算法库形式 代码开源，算法库形式 不开源，配置的形式   二次开发 允许 允许 不允许，仅配置   完整型号 XVF3000-TQ128-CA XVF3500-FB167-C XVF3510-QF60-C   评估板 PXVF3000-KIT PXVF3500-KIT PXVF3510-KIT   算法方向 会议通话/语音识别 会议通话/语音识别 会议通话/语音识别   算法优势 会议通话 会议通话 语音识别   AEC性能 mono AEC，非常好 stereo AEC ，非常好 stereo AEC，一般   Beam-forming 有 有 有，但弱化了   点噪消除 无 无 有，抗噪能力强   DOA 有，圆形可输出360度定位角度 有，线形输出180度定位角度 无，无输出角度信息         DSP 参数调整 较多参数可调整 较多参数可调整 较少参数可调整   DSP 参数固化 需在代码固化 需在代码固化 可上位机写入固化    选型建议 根据这三个平台的区别，木瓜电子提供选型思路参考如下</description>
+      </item>
+      
+      <item>
+        <title>麦克风阵列方案没有内置关键词</title>
+        <link>https://docs.pawpaw.ltd/notes/why_microphone_array_no_keyword/</link>
+        <pubDate>Wed, 23 Dec 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/notes/why_microphone_array_no_keyword/</guid>
+        <description>XMOS 麦克风阵列是否内置语音唤醒词（关键词）？ 答案是：否定的
+XMOS 现有麦克风阵列方案，如XVF3000, XVF3500 ,XVF3510等麦克风阵列都没有内置唤醒词（“keyword,关键词的叫法等同”），用户在设计语音识别产品时，需要用户在操作系统端设置语音唤醒词。下文简单阐述其中缘由：
+唤醒词的定制过程 唤醒词的定制过程涉及比较深的技术点，简单通俗地描述,
+1，基于唤醒词的声学频谱分布窗，初步唤醒词的算法模型
+2，跟进硬件载体的资源情况，确定唤醒词模型所需的RAM和算力大小，理论上，模型越大，识别率越高，所需资源越多。
+3，采集足够多唤醒词声音样本，且样本需要覆盖多样化，包括地域，年龄，性别等。
+4，使用样本激励原算法模型，使其更加适应样本的声学频谱特征，提高识别率
+5，误识别管制，加大管制和判断误识别，在识别率和误识别找出一个平衡点
+XMOS 自身原因 XMOS 麦克风阵列芯片XVF3000, XVF3500 ,XVF3510仅完成语音识别整个系统的前端减噪，回音消除，语音增强功能，并且前端算法和UAC/I2S/PDM接口后，所剩下的资源（算力，RAM）不多，没有办法再实现高质量唤醒词算法。
+XMOS 目前唤醒词定制平台仍未对外开放，所以没有办法完成用户所需的唤醒词定制
+语音识别的生态情况 做语音识别引擎平台，如国外的亚马逊，谷歌等，如国内的讯飞，百度，阿里，云知声等都具备定制唤醒服务，语言识别引擎提供SDK都能够引导用户去定制语音唤醒词。
+接入语音识别引擎平台时，往往需要操作系统运行这些引擎平台的SDK, 而唤醒词恰好运行在操作系统(linux, Android)中。
+在操作系统完成唤醒词的好处 操作系统有足够的算力资源能够支持更大模型的唤醒词模型，
+操作系统有友好的编程环境，第三方提供友好的SDK
+操作系统能够提供友好的VAD，以更好判断什么时候能够截至语音输入引擎平台API.
+而如果在前端减噪芯片去实现唤醒词，往往受限于DSP芯片资源限制，并且算法移植等编程语言限制等。在DSP下端完成VAD并不是一个理想的选择，最好是由语言识别引擎API完成。
+总结 如果使用XMOS 的XVF3000,XVF3500,XVF3510做语音识别交互的应用，用户需要考虑如果在操作平台完成唤醒词的设计。</description>
+      </item>
+      
+    
+  </channel>
+</rss>

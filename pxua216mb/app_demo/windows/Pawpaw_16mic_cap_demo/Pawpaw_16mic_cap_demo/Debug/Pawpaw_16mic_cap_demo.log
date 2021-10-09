@@ -1,0 +1,46 @@
+﻿生成启动时间为 2019/6/1 13:41:49。
+     1>项目“D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ID:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt init_config.c pa_devs.c play.c record.c
+         record.c
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\record.c(55): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\record.c(56): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\record.c(57): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\record.c(58): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\record.c(61): warning C4018: “<”: 有符号/无符号不匹配
+         play.c
+         pa_devs.c
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(39): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(40): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(41): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(42): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(43): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\pa_devs.c(34): warning C4101: “ledValue”: 未引用的局部变量
+         init_config.c
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\init_config.c(27): warning C4101: “defaultDisplayed”: 未引用的局部变量
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\init_config.c(113): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\init_config.c(116): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 d:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(290) : 参见“scanf”的声明
+         正在生成代码...
+     1>d:\documents\desktop\pawpaw_fireware\windows\pawpaw_16mic_cap_demo\pawpaw_16mic_cap_demo\init_config.c(120): warning C4716: “pa_device_select”: 必须返回一个值
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Debug\Pawpaw_16mic_cap_demo.exe" /INCREMENTAL /NOLOGO /LIBPATH:D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo portaudio_x86.lib setupapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Debug\Pawpaw_16mic_cap_demo.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Debug\Pawpaw_16mic_cap_demo.lib" /MACHINE:X86 Debug\init_config.obj
+         Debug\pa_devs.obj
+         Debug\play.obj
+         Debug\record.obj
+         Pawpaw_16mic_cap_demo.vcxproj -> D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Debug\Pawpaw_16mic_cap_demo.exe
+     1>已完成生成项目“D:\Documents\Desktop\pawpaw_fireware\windows\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo\Pawpaw_16mic_cap_demo.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:02.20

@@ -1,0 +1,2 @@
+SET_IO_MAP 2 5
+SET_IO_MAP 3 7

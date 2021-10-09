@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.vfctrl.MainActivity"
+    tools:showIn="@layout/activity_main">
+    <TextView
+        android:id="@+id/set_vid"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:gravity="center"
+        android:text="Set Vendor ID"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+        android:id="@+id/vid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="0x20B1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/set_pid"/>
+    <TextView
+        android:id="@+id/set_pid"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:gravity="center"
+        android:text="Set Product ID"
+        app:layout_constraintTop_toBottomOf="@+id/set_vid"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+        android:id="@+id/pid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="0x0014"
+        app:layout_constraintTop_toBottomOf="@+id/set_vid"
+        app:layout_constraintStart_toEndOf="@+id/set_pid"/>
+    <Button
+        android:id="@+id/select_cmd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select command"
+        app:layout_constraintTop_toBottomOf="@+id/set_pid"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <EditText
+        android:id="@+id/enter_cmd"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:text="Enter command and parameters here"
+        app:layout_constraintTop_toBottomOf="@+id/select_cmd"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <Button
+        android:id="@+id/execute_cmd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="Execute command"
+        app:layout_constraintLeft_toRightOf="@+id/enter_cmd"
+        app:layout_constraintTop_toBottomOf="@+id/select_cmd" />
+
+    <EditText
+        android:id="@+id/print_val"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintTop_toBottomOf="@+id/select_cmd"
+        app:layout_constraintLeft_toRightOf="@+id/execute_cmd"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

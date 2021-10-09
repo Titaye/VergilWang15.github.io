@@ -1,0 +1,2846 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XVF3000项目导入 – 木瓜电子</title>
+    
+
+
+  
+  <script defer src="/js/fuse.min.94c78ad70b02749822921660cf4e9f0b3701bc0680c421afb784a78228de0275.js"></script>
+
+
+
+<script src="/js/enquire.min.dfb99dee1e029d51d6cfb672d847929890b1585402de17f5ed092edd72a688b4.js"></script>
+
+<script defer src="/js/lazysizes.min.31dd6a2d3a1ec0f78a8df007535cf23f03aeb5c70f026e6d6a19dac3b3acc340.js"></script>
+
+<script defer src="/js/helper/getParents.min.ccd45f158c1b17849307ba913a72beac239c410f2b6e648496a79842da84e55b.js"></script>
+
+<script defer src="/js/helper/fadeinout.min.9fb19682560d5fa5596fffec85da605067c4acc86aad05add4d8fff9d362a446.js"></script>
+
+<script>
+  "use strict";
+
+  window.onload = function() {
+    
+    var languagedir = JSON.parse("\"ltr\"");
+    
+    var baseurl = JSON.parse("\"https://docs.pawpaw.ltd/\"");
+    
+    var permalink = JSON.parse("\"https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/\"");
+
+    
+    var toggleSidebarElem = document.getElementById("toggle-sidebar");
+    var toggleMenuElem = document.getElementById("toggle-menu");
+    var tocBodyElem = document.querySelector('.toc__body');
+    var tocLabelElem = document.querySelector('.toc__label');
+    var listMainElem = document.getElementById('list-main');
+    var listSideElem = document.getElementById('list-side');
+    var singleMenuElem = document.getElementById('single-menu');
+    var sliderIcons = document.querySelectorAll('.slider__icon');
+
+    toggleSidebarElem ?
+      toggleSidebarElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (tocBodyElem) {
+            fadeIn(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeIn(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'm';
+            listSideElem.className = 'r';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (tocBodyElem) {
+            fadeOut(tocBodyElem, 200);
+          }
+          if (tocLabelElem) {
+            fadeOut(tocLabelElem, 200);
+          }
+          if (listMainElem && listSideElem) {
+            listMainElem.className = 'mr';
+            listSideElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+
+    toggleMenuElem ?
+      toggleMenuElem.addEventListener('change', function (e) {
+        if (e.target.checked) {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'm';
+            singleMenuElem.className = 'l';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+
+        } else {
+          if (listMainElem && singleMenuElem) {
+            listMainElem.className = 'lm';
+            singleMenuElem.className = 'hide';
+          }
+
+          sliderIcons && sliderIcons.forEach(function (elem) {
+            if (elem.classList.contains('hide')) {
+              elem.classList.remove('hide');
+            } else {
+              elem.classList.add('hide');
+            }
+          });
+        }
+      }) : null;
+    
+
+
+    
+    var navCollapseBtn = document.getElementById('navCollapseBtn');
+    navCollapseBtn ? navCollapseBtn.addEventListener('click', function(e) {
+      var navCollapse = document.querySelector('.navbar__collapse');
+      
+      if (navCollapse) {
+        var dataOpen = navCollapse.getAttribute('data-open');
+
+        if (dataOpen === 'true') {
+          navCollapse.setAttribute('data-open', 'false');
+          navCollapse.style.maxHeight = 0;
+        } else {
+          navCollapse.setAttribute('data-open', 'true');
+          navCollapse.style.maxHeight = navCollapse.scrollHeight + "px";
+        }
+      }
+    }) : null;
+    
+
+
+    
+    var expandBtn = document.querySelectorAll('.expand__button');
+
+    for (let i = 0; i < expandBtn.length; i++) {
+      expandBtn[i].addEventListener("click", function () {
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          this.querySelector('svg').classList.add('expand-icon__right');
+          this.querySelector('svg').classList.remove('expand-icon__down');
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          this.querySelector('svg').classList.remove('expand-icon__right');
+          this.querySelector('svg').classList.add('expand-icon__down');
+        }
+      });
+    }
+    
+
+
+
+    
+    document.querySelectorAll('.tab') ? 
+    document.querySelectorAll('.tab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var tabLinks = elem.querySelectorAll('.tab__link');
+      var tabContents = elem.querySelectorAll('.tab__content');
+      var ids = [];
+
+      tabLinks && tabLinks.length > 0 ?
+      tabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                tabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              tabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+
+    
+    document.querySelectorAll('.codetab') ? 
+    document.querySelectorAll('.codetab').forEach(function(elem, idx) {
+      var containerId = elem.getAttribute('id');
+      var containerElem = elem;
+      var codetabLinks = elem.querySelectorAll('.codetab__link');
+      var codetabContents = elem.querySelectorAll('.codetab__content');
+      var ids = [];
+
+      codetabLinks && codetabLinks.length > 0 ?
+      codetabLinks.forEach(function(link, index, self) {
+        link.onclick = function(e) {
+          for (var i = 0; i < self.length; i++) {
+            if (index === parseInt(i, 10)) {
+              if (!self[i].classList.contains('active')) {
+                self[i].classList.add('active');
+                codetabContents[i].style.display = 'block';
+              }
+            } else {
+              self[i].classList.remove('active');
+              codetabContents[i].style.display = 'none';
+            }
+          }
+        }
+      }) : null;
+    }) : null;
+    
+
+    
+    
+    
+    var enableDarkMode = JSON.parse("false");
+    var root = document.getElementById('root');
+    var toggleToLightBtn = document.getElementById('toggleToLight');
+    var toggleToDarkBtn = document.getElementById('toggleToDark');
+
+    if (!enableDarkMode) {
+      root.className = 'theme__light';
+      localStorage.setItem('theme', 'light');
+    }
+    
+    if (toggleToDarkBtn) {
+      toggleToDarkBtn.onclick = function (e) {
+        root.className = 'theme__dark';
+        localStorage.setItem('theme', 'dark');
+        toggleToLightBtn.className = 'navbar__icons--icon';
+        toggleToDarkBtn.className = 'hide';
+      }
+    }
+
+    if (toggleToLightBtn) {
+      toggleToLightBtn.onclick = function (e) {
+        root.className = 'theme__light';
+        localStorage.setItem('theme', 'light');
+        toggleToLightBtn.className = 'hide';
+        toggleToDarkBtn.className = 'navbar__icons--icon';
+      }
+    }
+
+    
+    document.querySelectorAll('.menu__list').forEach(function(elem) {
+      if (elem.classList.contains('active')) {
+        elem.style.maxHeight = elem.scrollHeight + "px"; 
+      }
+    });
+    
+    document.querySelectorAll('.menu__title--collapse').forEach(function(elem) {
+      elem.addEventListener('click', function (e) {
+        var content = this.nextElementSibling;
+        var menuTitleIcon = this.querySelector('.menu__title--icon');
+        if (!content) {
+          return null;
+        }
+
+        var parent = elem.parentNode;
+        while (parent.classList.contains('menu__list') && parent.classList.contains('active')) {
+          parent.style.maxHeight = 100 * parent.children.length + "px";
+          parent = parent.parentNode;
+        }
+
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+          content.classList.remove('active');
+          menuTitleIcon.classList.add('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.remove('downrtl');
+          } else {
+            menuTitleIcon.classList.remove('down');
+          }
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+          content.classList.add('active');
+          menuTitleIcon.classList.remove('right');
+          
+          if (languagedir === 'rtl') {
+            menuTitleIcon.classList.add('downrtl');
+          } else {
+            menuTitleIcon.classList.add('down');
+          }
+        }
+      });
+    });
+    
+
+
+    
+    var mobileLogo = document.getElementById('mobileLogo');
+    var modal = document.getElementById("myModal");
+    var drawer = document.getElementById('myDrawer');
+    var drawerCloseBtn = document.querySelector('.drawer__close');
+
+    var openDrawer = function() {
+      modal.style.opacity = 1;
+
+      if (languagedir === 'rtl') {
+        modal.style.right = 0;
+        drawer.style.right = 0;
+      } else {
+        modal.style.left = 0;
+        drawer.style.left = 0;
+      }
+    }
+
+    var closeDrawer = function() {
+      modal.style.opacity = 0;
+
+      if (languagedir === 'rtl') {
+        drawer.style.right = '-100%';
+      } else {
+        drawer.style.left = '-100%';
+      }
+
+      
+      setTimeout(function () {
+        if (languagedir === 'rtl') {
+          modal.style.right = '-100%';
+        } else {
+          modal.style.left = '-100%';
+        }
+      }, 250);
+    }
+
+    mobileLogo.onclick = function () {
+      openDrawer();
+      localStorage.setItem('isDrawerOpen', 'true');
+    }
+
+    modal.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+
+    drawerCloseBtn.onclick = function () {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  
+
+
+  
+    var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var tocElem = document.querySelector('.toc');
+    var tableOfContentsElem = tocElem ? tocElem.querySelector('#TableOfContents') : null;
+    var singleContentsElem = document.querySelector('.single__contents');
+    var dataBGImgs = document.querySelectorAll('div[data-bgimg]');
+
+    
+    var tocLevels = JSON.parse("[\"h2\",\"h3\",\"h4\"]");
+
+    if (tocLevels) {
+      tocLevels = tocLevels.toString();
+    } else {
+      tocLevels = "h1, h2, h3, h4, h5, h6";
+    }
+
+    
+    var isLandingBgImg = JSON.parse("null");
+    
+    var isHome = JSON.parse("false");
+
+    function setNavbarBG(scrollTop) {
+      if (isHome && isLandingBgImg && Object.keys(isLandingBgImg).length) {
+        if (isLandingBgImg.height <= scrollTop) {
+          dataBGImgs.forEach(function(elem) {
+            elem.setAttribute('data-bgimg', 'false');
+          });
+        } else {
+          dataBGImgs.forEach(function (elem) {
+            elem.setAttribute('data-bgimg', 'true');
+          });
+        }
+      }
+    }
+    setNavbarBG(lastScrollTop);
+
+    window.onscroll = function () {
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      } else { 
+        singleContentsElem ? 
+        singleContentsElem.querySelectorAll(tocLevels.toString()).forEach(function(elem) {
+          if (document.documentElement.scrollTop >= elem.offsetTop) {
+            if (tableOfContentsElem) {
+              var id = elem.getAttribute('id');
+              tocElem.querySelectorAll('a').forEach(function (elem) {
+                elem.classList.remove('active');
+              });
+              tocElem.querySelector('a[href="#' + id + '"]') ? 
+              tocElem.querySelector('a[href="#' + id + '"]').classList.add('active') : null;
+            }
+          }
+        }) : null;
+        setNavbarBG(st);
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    };
+    
+
+
+
+    
+    var mobileSearchInputElem = document.querySelector('#search-mobile');
+    var mobileSearchClassElem = document.querySelector('.mobile-search');
+    var mobileSearchBtnElem = document.querySelector('#mobileSearchBtn');
+    var mobileSearchCloseBtnElem = document.querySelector('#search-mobile-close');
+    var mobileSearchContainer = document.querySelector('#search-mobile-container');
+    var mobileSearchResultsElem = document.querySelector('#search-mobile-results');
+    var htmlElem = document.querySelector('html');
+
+    if (mobileSearchClassElem) {
+      mobileSearchClassElem.style.display = 'none';
+    }
+
+    mobileSearchBtnElem ? 
+    mobileSearchBtnElem.addEventListener('click', function () {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'block';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.focus();
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'hidden';
+      }
+    }) : null;
+
+    mobileSearchCloseBtnElem ? 
+    mobileSearchCloseBtnElem.addEventListener('click', function() {
+      if (mobileSearchContainer) {
+        mobileSearchContainer.style.display = 'none';
+      }
+
+      if (mobileSearchInputElem) {
+        mobileSearchInputElem.value = '';
+      }
+      
+      if (mobileSearchResultsElem) {
+        while (mobileSearchResultsElem.firstChild) {
+          mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+        }
+      }
+
+      if (htmlElem) {
+        htmlElem.style.overflowY = 'visible';
+      }
+    }) : null;
+
+    mobileSearchInputElem ? 
+    mobileSearchInputElem.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (mobileSearchContainer) {
+          mobileSearchContainer.style.display = 'none';
+        }
+        
+        if (mobileSearchInputElem) {
+          mobileSearchInputElem.value = '';
+        }
+
+        if (mobileSearchResultsElem) {
+          while (mobileSearchResultsElem.firstChild) {
+            mobileSearchResultsElem.removeChild(mobileSearchResultsElem.firstChild);
+          }
+        }
+        if (htmlElem) {
+          htmlElem.style.overflowY = 'visible';
+        }
+      }
+    }) : null;
+  
+
+
+  
+    var localTheme = localStorage.getItem('theme');
+    var rootEleme = document.getElementById('root');
+    var selectThemeElem = document.querySelectorAll('.select-theme');
+    var selectThemeItemElem = document.querySelectorAll('.select-theme__item');
+    
+    if (localTheme) {
+      selectThemeItemElem ? 
+      selectThemeItemElem.forEach(function (elem) {
+        if (elem.text.trim() === localTheme) {
+          elem.classList.add('is-active');
+        } else {
+          elem.classList.remove('is-active');
+        }
+      }) : null;
+    }
+
+    selectThemeItemElem ? 
+    selectThemeItemElem.forEach(function (v, i) {
+      v.addEventListener('click', function (e) {
+        var selectedThemeVariant = e.target.text.trim();
+        localStorage.setItem('theme', selectedThemeVariant);
+
+        rootEleme.removeAttribute('class');
+        rootEleme.classList.add(`theme__${selectedThemeVariant}`);
+        selectThemeElem.forEach(function(rootElem) {
+          rootElem.querySelectorAll('a').forEach(function (elem) {
+            if (elem.classList) {
+              if (elem.text.trim() === selectedThemeVariant) {
+                if (!elem.classList.contains('is-active')) {
+                  elem.classList.add('is-active');
+                }
+              } else {
+                if (elem.classList.contains('is-active')) {
+                  elem.classList.remove('is-active');
+                }
+              }
+            }
+          });
+        });
+
+        if (window.mermaid) {
+          if (selectedThemeVariant === "dark" || selectedThemeVariant === "hacker") {
+            mermaid.initialize({ theme: 'dark' });
+            location.reload();
+          } else {
+            mermaid.initialize({ theme: 'default' });
+            location.reload();
+          }
+        }
+
+        var utterances = document.querySelector('iframe');
+        if (utterances) {
+          utterances.contentWindow.postMessage({
+            type: 'set-theme',
+            theme: selectedThemeVariant === "dark" || selectedThemeVariant === "hacker" ? 'photon-dark' : selectedThemeVariant === 'kimbie' ? 'github-dark-orange' : 'github-light',
+          }, 'https://utteranc.es');
+        }
+      });
+    }) : null;
+  
+
+
+  
+    
+    var langprefix = JSON.parse("\"\"");
+    var searchResults = null;
+    var searchMenu = null;
+    var searchText = null;
+    
+    
+    var enableSearchHighlight = JSON.parse("true");
+    
+    var enableSearch = JSON.parse("true");
+
+    var fuse = null;
+
+    if (enableSearch) {
+      (function initFuse() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', baseurl + langprefix + "/index.json");
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            fuse = new Fuse(JSON.parse(xhr.response.toString('utf-8')), {
+              keys: ['title', 'description', 'content'],
+              includeMatches: enableSearchHighlight,
+              shouldSort: true,
+              threshold: 0.4,
+              location: 0,
+              distance: 100,
+              maxPatternLength: 32,
+              minMatchCharLength: 1,
+            });
+          }
+          else {
+            console.error(`[${xhr.status}]Error:`, xhr.statusText);
+          }
+        };
+        xhr.send();
+      })();
+    }
+    
+    function makeLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      
+      var a = document.createElement('a');
+      a.innerHTML = obj.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.permalink);
+
+      var descDiv = document.createElement('div');
+      descDiv.setAttribute('class', 'search-result__item--desc');
+      if (obj.description) {
+        descDiv.innerHTML = obj.description;
+      } else if (obj.content) {
+        descDiv.innerHTML = obj.content.substring(0, 80);
+      }
+      
+      li.appendChild(a);
+      li.appendChild(descDiv);
+      ulElem.appendChild(li);
+    }
+
+    function makeHighlightLi(ulElem, obj) {
+      var li = document.createElement('li');
+      li.className = 'search-result__item';
+      var descDiv = null;
+
+      var a = document.createElement('a');
+      a.innerHTML = obj.item.title;
+      a.setAttribute('class', 'search-result__item--title');
+      a.setAttribute('href', obj.item.uri);
+
+      if (obj.matches && obj.matches.length) {
+        for (var i = 0; i < obj.matches.length; i++) {
+          if ('title' === obj.matches[i].key) {
+            a = document.createElement('a');
+            a.innerHTML = generateHighlightedText(obj.matches[i].value, obj.matches[i].indices);
+            a.setAttribute('class', 'search-result__item--title');
+            a.setAttribute('href', obj.item.uri);
+          }
+          
+          if ('description' === obj.matches[i].key) {
+            descDiv = document.createElement('div');
+            descDiv.setAttribute('class', 'search-result__item--desc');
+            descDiv.innerHTML = generateHighlightedText(obj.item.description, obj.matches[i].indices);
+          } else if ('content' === obj.matches[i].key) {
+            if (!descDiv) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = generateHighlightedText(obj.item.content.substring(0, 80), obj.matches[i].indices);
+            }
+          } else {
+            if (obj.item.description) {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.description;
+            } else {
+              descDiv = document.createElement('div');
+              descDiv.setAttribute('class', 'search-result__item--desc');
+              descDiv.innerHTML = obj.item.content.substring(0, 80);
+            }
+          }
+        }
+
+        li.appendChild(a);
+        if (descDiv) {
+          li.appendChild(descDiv);
+        }
+        if (li) {
+          ulElem.appendChild(li);
+        }
+      }
+    }
+
+    function renderSearchResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+      
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.setAttribute('href', result.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+
+          var descDiv = document.createElement('div');
+          descDiv.setAttribute('class', 'search-result__item--desc');
+          if (result.description) {
+            descDiv.innerHTML = result.description;
+          } else if (result.content) {
+            descDiv.innerHTML = result.content.substring(0, 80);
+          }
+
+          li.appendChild(titleDiv);
+          li.appendChild(descDiv);
+          ul.appendChild(a);
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchHighlightResults(searchText, results) {
+      searchResults = document.getElementById('search-results');
+      searchMenu = document.getElementById('search-menu');
+      searchResults.setAttribute('class', 'dd is-active');
+
+      var ul = document.createElement('ul');
+      ul.setAttribute('class', 'dd-content search-content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.setAttribute('class', 'dd-item');
+          a.appendChild(li);
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'search-result__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'search-result__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 80), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'search-result__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 80);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var li = document.createElement('li');
+        li.setAttribute('class', 'dd-item');
+        li.innerText = 'No results found';
+        ul.appendChild(li);
+      }
+
+      while (searchMenu.hasChildNodes()) {
+        searchMenu.removeChild(
+          searchMenu.lastChild
+        );
+      }
+      searchMenu.appendChild(ul);
+    }
+
+    function renderSearchResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var content = document.createElement('div');
+      content.setAttribute('class', 'mobile-search__content');
+
+      if (results.length > 0) {
+        results.forEach(function (result) {
+          var item = document.createElement('a');
+          item.setAttribute('href', result.uri);
+          item.innerHTML = '<div class="mobile-search__item"><div class="mobile-search__item--title">📄 ' + result.title + '</div><div class="mobile-search__item--desc">' + (result.description ? result.description : result.content) + '</div></div>';
+          content.appendChild(item);
+        });
+      } else {
+        var item = document.createElement('span');
+        content.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(content);      
+    }
+
+    function renderSearchHighlightResultsMobile(searchText, results) {
+      searchResults = document.getElementById('search-mobile-results');
+
+      var ul = document.createElement('div');
+      ul.setAttribute('class', 'mobile-search__content');
+
+      if (results.length) {
+        results.forEach(function (result) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          var descDiv = null;
+
+          a.setAttribute('href', result.item.uri);
+          a.appendChild(li);
+          li.setAttribute('class', 'mobile-search__item');
+
+          var titleDiv = document.createElement('div');
+          titleDiv.innerHTML = result.item.title;
+          titleDiv.setAttribute('class', 'mobile-search__item--title');
+          
+          if (result.matches && result.matches.length) {
+            for (var i = 0; i < result.matches.length; i++) {
+              if ('title' === result.matches[i].key) {
+                titleDiv.innerHTML = generateHighlightedText(result.matches[i].value, result.matches[i].indices);
+              }
+
+              if ('description' === result.matches[i].key) {
+                descDiv = document.createElement('div');
+                descDiv.setAttribute('class', 'mobile-search__item--desc');
+                descDiv.innerHTML = generateHighlightedText(result.item.description, result.matches[i].indices);
+              } else if ('content' === result.matches[i].key) {
+                if (!descDiv) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = generateHighlightedText(result.item.content.substring(0, 150), result.matches[i].indices);
+                }
+              } else {
+                if (result.item.description) {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.description;
+                } else {
+                  descDiv = document.createElement('div');
+                  descDiv.setAttribute('class', 'mobile-search__item--desc');
+                  descDiv.innerHTML = result.item.content.substring(0, 150);
+                }
+              }
+            }
+            
+            li.appendChild(titleDiv);
+            if (descDiv) {
+              li.appendChild(descDiv);
+            }
+            ul.appendChild(a);
+          }
+        });
+      } else {
+        var item = document.createElement('span');
+        ul.appendChild(item);
+      }
+
+      let wrap = document.getElementById('search-mobile-results');
+      while (wrap.firstChild) {
+        wrap.removeChild(wrap.firstChild)
+      }
+      searchResults.appendChild(ul);
+    }
+
+    function generateHighlightedText(text, regions) {
+      if (!regions) {
+        return text;
+      }
+
+      var content = '', nextUnhighlightedRegionStartingIndex = 0;
+
+      regions.forEach(function(region) {
+        if (region[0] === region[1]) {
+          return null;
+        }
+        
+        content += '' +
+          text.substring(nextUnhighlightedRegionStartingIndex, region[0]) +
+          '<span class="search__highlight">' +
+            text.substring(region[0], region[1] + 1) +
+          '</span>' +
+        '';
+        nextUnhighlightedRegionStartingIndex = region[1] + 1;
+      });
+
+      content += text.substring(nextUnhighlightedRegionStartingIndex);
+
+      return content;
+    };
+
+    var searchElem = document.getElementById('search');
+    var searchMobile = document.getElementById('search-mobile');
+    var searchResultsContainer = document.getElementById('search-results');
+
+    searchElem ? 
+    searchElem.addEventListener('input', function(e) {
+      if (!e.target.value | window.innerWidth < 770) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('blur', function() {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+    }) : null;
+
+    searchElem ? 
+    searchElem.addEventListener('click', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+      if (!e.target.value) {
+        searchResultsContainer ? searchResultsContainer.setAttribute('class', 'dd') : null;
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+
+      if (enableSearchHighlight) {
+        renderSearchHighlightResults(searchText, results);
+      } else {
+        renderSearchResults(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+
+    var searchMenuElem = document.getElementById("search-menu");
+    var activeItem = document.querySelector('#search-menu .dd-item.is-active');
+    var activeIndex = null;
+    var items = null;
+    var searchContainerMaxHeight = 350;
+
+    searchElem ? 
+    searchElem.addEventListener('keydown', function(e) {
+      if (window.innerWidth < 770) {
+        return null;
+      }
+
+      var items = document.querySelectorAll('#search-menu .dd-item');
+      
+      if (e.key === 'ArrowDown') {
+        if (activeIndex === null) {
+          activeIndex = 0;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+        }
+        items[activeIndex].classList.add('is-active');
+
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel > 0) {
+          document.querySelector(".search-content").scrollTop += items[activeIndex].getBoundingClientRect().height;
+        } else if (activeIndex === 0) {
+          document.querySelector(".search-content").scrollTop = 0;
+        }
+      } else if (e.key === 'ArrowUp') {
+        if (activeIndex === null) {
+          activeIndex = items.length - 1;
+          items[activeIndex].classList.remove('is-active');
+        } else {
+          items[activeIndex].classList.remove('is-active');
+          activeIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+        }
+        items[activeIndex].classList.add('is-active');
+        
+        let overflowedPixel = items[activeIndex].offsetTop + items[activeIndex].clientHeight - searchContainerMaxHeight;
+        if (overflowedPixel < 0) {
+          document.querySelector(".search-content").scrollTop -= items[activeIndex].getBoundingClientRect().height;
+        } else {
+          document.querySelector(".search-content").scrollTop = overflowedPixel + items[activeIndex].getBoundingClientRect().height;
+        }
+      } else if (e.key === 'Enter') {
+        var currentItemLink = items[activeIndex].getAttribute('href');
+        if (currentItemLink) {
+          location.href = currentItemLink;
+        }
+      } else if (e.key === 'Escape') {
+        e.target.value = null;
+        if (searchResults) {
+          searchResults.classList.remove('is-active');
+        }
+      }
+    }) : null;
+
+    searchMobile ? 
+    searchMobile.addEventListener('input', function(e) {
+      if (!e.target.value) {
+        let wrap = document.getElementById('search-mobile-results');
+        while (wrap.firstChild) {
+          wrap.removeChild(wrap.firstChild);
+        }
+        return null;
+      }
+
+      searchText = e.target.value;
+      var results = fuse.search(e.target.value);
+      
+      if (enableSearchHighlight) {
+        renderSearchHighlightResultsMobile(searchText, results);
+      } else {
+        renderSearchResultsMobile(searchText, results);
+      }
+
+      var dropdownItems = searchResultsContainer.querySelectorAll('.dd-item');
+      dropdownItems ? dropdownItems.forEach(function (item) {
+        item.addEventListener('mousedown', function (e) {
+          e.target.click();
+        });
+      }) : null;
+    }) : null;
+  
+  }
+</script>
+    
+
+
+<link rel="stylesheet" href="/css/main.min.css">
+
+
+    <meta name="description" content="XVF3000项目导入落地实施步骤，了解硬件设计，固件设计，功能选择，以及量产测试等指引" />
+<meta name="keywords" content="">
+<meta name="created" content="2020-12-07T00:38:59&#43;0900">
+<meta name="modified" content="2020-12-07T00:38:59&#43;0900">
+
+
+<meta property="og:site_name" content="木瓜电子">
+<meta property="og:title" content="XVF3000项目导入">
+<meta property="og:url" content="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.88.1" />
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/">
+<link rel="manifest" href="/manifest.json">
+
+
+  <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon/favicon.ico"type="image/x-icon">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "XVF3000项目导入",
+    "datePublished": "2020-12-07T00:38:59+09:00",
+    "dateModified": "2020-12-07T00:38:59+09:00",
+    "url" : "https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/",
+    "description": "XVF3000项目导入落地实施步骤，了解硬件设计，固件设计，功能选择，以及量产测试等指引",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://docs.pawpaw.ltd/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "木瓜电子",
+      "url": "https://docs.pawpaw.ltd/"
+    }
+  }
+</script>
+
+    
+
+</head>
+
+
+<body id="root" class="theme__light">
+    <script>
+        var rootElem = document.getElementById('root');
+        var themeOptions = JSON.parse("[\"light\"]");
+        var localTheme = localStorage.getItem('theme');
+
+        if (localTheme) {
+            if (themeOptions && themeOptions.length > 0) {
+                themeOptions.includes(localTheme) ? 
+                rootElem.className = `theme__${localTheme}` :
+                rootElem.className = `theme__${themeOptions[0]}`;
+            }
+        }
+    </script>
+    
+    <div id="container">
+        <div id="myDrawer" class="drawer" style="">
+  <div class="drawer__header">
+    <a href="/" class="drawer__header--text">
+       Pawpaw 木瓜电子
+    </a>
+    <div class="grow"></div>
+    <div class="drawer__close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+    </div>
+  </div>
+
+  <div class="drawer__body">
+    <div class="menu">
+  <h6 class="menu__label">
+    
+      XVF3000项目导入
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/">
+    <span class="menu__title--collapse-text">
+      PXUA216MB-DL2
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua216mb-dl2-m/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_app_dome/" class="menu__title " data-depth="0">PXUA216MB_上位机例程</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/" class="menu__title " data-depth="0">PXUA216MB_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxua08qf48/">
+    <span class="menu__title--collapse-text">
+      PXUA08QF48
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua08qf48/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_hw_deseign/" class="menu__title " data-depth="0">PXUA08QF48_硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_firmware_desc/" class="menu__title " data-depth="0">PXUA08QF48固件说明</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_proj_import/" class="menu__title " data-depth="0">USB Audio_项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_usage/" class="menu__title " data-depth="0">PXUA08QF48_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/us516p6-kit/">
+    <span class="menu__title--collapse-text">
+      US516P6-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/us516p6-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_project_import/" class="menu__title " data-depth="0">US516P5_项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_hw_design/" class="menu__title " data-depth="0">US516P5_硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6-kit_usage/" class="menu__title " data-depth="0">US516P5-KIT_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxvf3000-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3000-KIT
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/pxvf3000-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/" class="menu__title " data-depth="0">PXVF3000-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/" class="menu__title " data-depth="0">XVF3000硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/" class="menu__title active" data-depth="0">XVF3000项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3000-KIT_dsp_描述</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/p3510-2mic/">
+    <span class="menu__title--collapse-text">
+      P3510-2MIC
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/p3510-2mic/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/" class="menu__title " data-depth="0">P3510-2MIC_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_debug_note/" class="menu__title " data-depth="0">P3510-2MIC_调试笔记</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxvf3500-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3500-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3500-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/" class="menu__title " data-depth="0">XVF3500项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3500-KIT_dsp_描述</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/" class="menu__title " data-depth="0">PXVF3500-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/" class="menu__title " data-depth="0">XVF3500硬件设计</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+
+<script>
+  var menuTitle = document.querySelectorAll('.menu__title');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+
+  var closeDrawer = function () {
+    setTimeout(function () {
+      modal.style.opacity = 0;
+      drawer.style.left = '-100%';
+      modal.style.left = '-100%';
+    }, 250);
+  }
+
+  menuTitle ? 
+  menuTitle.forEach(function(elem) {
+    elem.onclick = function() {
+      closeDrawer();
+      localStorage.setItem('isDrawerOpen', 'false');
+    }
+  }) : null;
+</script>
+  </div>
+</div>
+<div id="myModal" class="modal" style=""></div>
+
+<script>
+  var isDrawerOpen = localStorage.getItem('isDrawerOpen');
+  var modal = document.getElementById("myModal");
+  var drawer = document.getElementById('myDrawer');
+  
+  
+  var languagedir = JSON.parse("\"ltr\"");
+
+  var openDrawer = function () {
+    modal.style.opacity = 1;
+    
+    if (languagedir === "rtl") {
+      modal.style.right = 0;
+      drawer.style.right = 0;
+    } else {
+      modal.style.left = 0;
+      drawer.style.left = 0;
+    }
+  }
+
+  if (isDrawerOpen && isDrawerOpen === 'true') {
+    openDrawer();
+  }
+</script>
+        
+<nav class="nav">
+  <div class="navbar__wrapper" data-bgimg="false">
+    <div class="divider">
+      <div class="navbar lmr">
+        <div id="siteLogo" class="navbar__logo--wrapper">
+  
+    <a href="/" title="" rel="home" class="navbar__logo--link">
+      <img src="/logo.png" alt="Home" class="navbar__logo">
+    </a>
+  
+  
+    <a href="/" title="" rel="home" class="navbar__logo--text-link">
+      <h6 class="navbar__logo--text" data-bgimg="false"> Pawpaw 木瓜电子</h6>
+    </a>
+  
+</div>
+        
+        <div class="navbar__menu--wrapper">
+          <div id="tabletLogo" class="hide">
+  
+  <a href="/" rel="home" class="navbar__logo--link">
+    <img src="/logo.png" alt="Home" class="navbar__logo">
+  </a>
+  
+</div>
+          <div id="mobileLogo" class="hide">
+  <a href="#" class="navbar__logo--link">
+    <div class="navbar__icons--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/></svg>
+    </div>
+  </a>
+</div>
+          <span id="navMenuMobile" class="hide">
+  <button id="navCollapseBtn" class="navbar__dropdown--title" aria-label="Section Menu" data-dir="ltr">
+    
+      docs
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M8.12 9.29L12 13.17l3.88-3.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0L6.7 10.7c-.39-.39-.39-1.02 0-1.41.39-.38 1.03-.39 1.42 0z"/></svg>
+  </button>
+  <div class="navbar__collapse" data-open="false">
+  <ul>
+    
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item active">
+    <a href="/docs" class="active">文档</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/download" class="">下载</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/about" class="">关于</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--mobile-item ">
+    <a href="/notes" class="">笔记</a>
+  </li>
+
+  </ul>
+</div>
+</span>
+          <ul id="navMenu" class="navbar__menu">
+            
+
+  
+  
+  
+  
+  <li class="navbar__menu--item active">
+    <a href="/docs" data-bgimg="false">文档</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/download" data-bgimg="false">下载</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/about" data-bgimg="false">关于</a>
+  </li>
+
+  
+  
+  
+  
+  <li class="navbar__menu--item ">
+    <a href="/notes" data-bgimg="false">笔记</a>
+  </li>
+
+          </ul>
+        </div>
+        <div class="grow"></div>
+        <div id="siteSearch">
+          
+
+<div class="search" data-bgimg="false">
+  <span class="icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+  </span>
+  <input id="search" aria-label="Site Search" class="input" type="text" autocomplete="off" placeholder="Search">
+  <div id="search-results" class="dropdown">
+    <div id="search-menu" class="dropdown-menu">
+    </div>
+  </div>
+</div>
+
+
+        </div>
+        <div id="mobileSearch" class="hide">
+          
+<div id="mobileSearchBtn" class="mobile-search__btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+</div>
+
+<div id="search-mobile-container" class="mobile-search hide">
+  <div class="mobile-search__top">
+    <input id="search-mobile" type="text" aria-label="Mobile Search" placeholder="Search..." class="mobile-search__top--input"/>
+    <div id="search-mobile-close" class="mobile-search__top--icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.59-13L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg>
+    </div>
+  </div>
+  <div id="search-mobile-results" class="mobile-search__body">
+    
+  </div>
+</div>
+
+        </div>
+        <div class="navbar__icons">
+  
+<div class="dropdown">
+  <button class="lang__dropdown navbar__icons--icon" aria-label="Select Site Language">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12.65 15.67c.14-.36.05-.77-.23-1.05l-2.09-2.06.03-.03c1.74-1.94 2.98-4.17 3.71-6.53h1.94c.54 0 .99-.45.99-.99v-.02c0-.54-.45-.99-.99-.99H10V3c0-.55-.45-1-1-1s-1 .45-1 1v1H1.99c-.54 0-.99.45-.99.99 0 .55.45.99.99.99h10.18C11.5 7.92 10.44 9.75 9 11.35c-.81-.89-1.49-1.86-2.06-2.88-.16-.29-.45-.47-.78-.47-.69 0-1.13.75-.79 1.35.63 1.13 1.4 2.21 2.3 3.21L3.3 16.87c-.4.39-.4 1.03 0 1.42.39.39 1.02.39 1.42 0L9 14l2.02 2.02c.51.51 1.38.32 1.63-.35zM17.5 10c-.6 0-1.14.37-1.35.94l-3.67 9.8c-.24.61.22 1.26.87 1.26.39 0 .74-.24.88-.61l.89-2.39h4.75l.9 2.39c.14.36.49.61.88.61.65 0 1.11-.65.88-1.26l-3.67-9.8c-.22-.57-.76-.94-1.36-.94zm-1.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+  </button>
+  <div class="dropdown-content lang__dropdown--content">
+    
+    
+    
+      
+      
+        
+      
+        
+        
+          
+            
+              <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/" data-lang="zh-cn" class="lang__dropdown--item active">中文</a>
+            
+          
+        
+      
+    
+  </div>
+</div>
+
+  
+  <div class="navbar__icons--icon">
+    <a href="http://www.pawpaw.hk/" title="Pawpaw web" aria-label="Pawpaw web" target="_blank" rel="noreferrer" >
+    <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+ 
+ <g>
+  <title>Pawpaw web</title>
+  <rect fill="#fff" id="canvas_background" height="24" width="24" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Pawpaw web</title>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_7" y2="8.87098" x2="0.87646" y1="0.66374" x1="11.44819" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="8.02822" x2="21.36775" y1="1.07171" x1="10.4982" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_12" y2="19.57675" x2="5.67393" y1="8.27242" x1="5.67393" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_13" y2="20.22893" x2="13.93478" y1="4.35938" x1="13.93478" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="19.57675" x2="23.2826" y1="19.57675" x1="0.02176" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  <line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15" y2="11.75068" x2="18.71739" y1="11.75068" x1="14.15218" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+ </g>
+</svg>
+    </a>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  var siteLogo = document.getElementById('siteLogo');
+  var tabletLogo = document.getElementById('tabletLogo');
+  var mobileLogo = document.getElementById('mobileLogo');
+  var navMenu = document.getElementById('navMenu');
+  var navMenuMobile = document.getElementById('navMenuMobile');
+  var siteSearch = document.getElementById('siteSearch');
+  var mobileSearch = document.getElementById('mobileSearch');
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'navbar__logo--wrapper';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = '';
+      mobileSearch.className = 'hide';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = 'hide';
+      mobileLogo.className = '';
+      navMenu.className = 'hide';
+      navMenuMobile.className = '';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+    unmatch: function () {
+      siteLogo.className = 'hide';
+      tabletLogo.className = '';
+      mobileLogo.className = 'hide';
+      navMenu.className = 'navbar__menu';
+      navMenuMobile.className = 'hide';
+      siteSearch.className = 'hide';
+      mobileSearch.className = 'navbar__icons--icon';
+    },
+  });
+</script>
+
+        
+  <div class="top">
+  <div class="header__wrapper bgcolor__header">
+    <div class="divider">
+      <div class="lmr">
+        <h2 class="title">XVF3000项目导入</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="header__wrapper bgcolor__breadcrumb">
+    <div class="divider">
+      <div class="lmr flexbox">
+        
+          <nav class="breadcrumb" aria-label="breadcrumbs" data-is-blog="false">
+  
+  <ol>
+    
+  
+  
+  
+  
+  
+  
+  
+  <li >
+    
+      <a href="https://docs.pawpaw.ltd/" class="capitalize">木瓜电子</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="https://docs.pawpaw.ltd/docs/" class="capitalize">Docs</a>
+    
+  </li>
+  
+  
+  <li >
+    
+      <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/" class="capitalize">PXVF3000-KIT</a>
+    
+  </li>
+  
+  
+  <li  class="is-active" >
+    
+      <span>XVF3000项目导入</span>
+    
+  </li>
+  
+  </ol>
+  
+</nav>
+        
+        <div class="grow"></div>
+        
+  <label class="switch switch__rel">
+    
+      <input id="toggle-sidebar" aria-label="Toggle Sidebar Visibility" type="checkbox" checked />
+      <span class="slider">
+        <span class="slider__icon ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </span>
+        <span class="slider__icon hide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </span>
+      </span>
+    
+    
+  </label>
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+  
+
+<div class="mid">
+  <div class="divider">
+    
+    <nav id="single-menu" class="l" data-dir="ltr">
+      
+        <div class="menu">
+  <h6 class="menu__label">
+    
+      XVF3000项目导入
+    
+  </h6>
+  <ul>
+    
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/">
+    <span class="menu__title--collapse-text">
+      PXUA216MB-DL2
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua216mb-dl2-m/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_app_dome/" class="menu__title " data-depth="0">PXUA216MB_上位机例程</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua216mb-dl2-m/pxua216mb-dl2_usage/" class="menu__title " data-depth="0">PXUA216MB_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxua08qf48/">
+    <span class="menu__title--collapse-text">
+      PXUA08QF48
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxua08qf48/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_hw_deseign/" class="menu__title " data-depth="0">PXUA08QF48_硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_firmware_desc/" class="menu__title " data-depth="0">PXUA08QF48固件说明</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_proj_import/" class="menu__title " data-depth="0">USB Audio_项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxua08qf48/pxua08qf48_usage/" class="menu__title " data-depth="0">PXUA08QF48_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/us516p6-kit/">
+    <span class="menu__title--collapse-text">
+      US516P6-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/us516p6-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_project_import/" class="menu__title " data-depth="0">US516P5_项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6_hw_design/" class="menu__title " data-depth="0">US516P5_硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/us516p6-kit/us516p6-kit_usage/" class="menu__title " data-depth="0">US516P5-KIT_硬件使用</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse active" data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxvf3000-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3000-KIT
+    </span>
+    <span class="menu__title--icon down">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list active" data-data=/pxvf3000-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_usage/" class="menu__title " data-depth="0">PXVF3000-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/" class="menu__title " data-depth="0">XVF3000硬件设计</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/" class="menu__title active" data-depth="0">XVF3000项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3000-KIT_dsp_描述</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/p3510-2mic/">
+    <span class="menu__title--collapse-text">
+      P3510-2MIC
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/p3510-2mic/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/" class="menu__title " data-depth="0">P3510-2MIC_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_debug_note/" class="menu__title " data-depth="0">P3510-2MIC_调试笔记</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+      
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  <li class="menu__title--collapse " data-depth="0" data-permalink="https://docs.pawpaw.ltd/docs/pxvf3500-kit/">
+    <span class="menu__title--collapse-text">
+      PXVF3500-KIT
+    </span>
+    <span class="menu__title--icon right">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+      
+    </span>
+  </li>
+  <ul class="menu__list " data-data=/pxvf3500-kit/ data-link=https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_project_import/>
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_project_import/" class="menu__title " data-depth="0">XVF3500项目导入</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_dsp_desc/" class="menu__title " data-depth="0">PXVF3500-KIT_dsp_描述</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/pxvf3500-kit_usage/" class="menu__title " data-depth="0">PXVF3500-KIT_硬件使用</a>
+        </li>
+      
+    
+      
+        
+        
+        <li>
+          <a href="https://docs.pawpaw.ltd/docs/pxvf3500-kit/xvf3500_hw_deseign/" class="menu__title " data-depth="0">XVF3500硬件设计</a>
+        </li>
+      
+    
+  </ul>
+  
+
+    
+  </ul>
+</div>
+
+
+      
+    </nav>
+
+    <article id="list-main" class="m" data-dir="ltr">
+      <div class="single" data-display="block">
+  
+
+  <article class="single__contents" data-dir="ltr">
+    <h3 id="阅读前确认">阅读前确认</h3>
+<p>用户需要确认一下内容，以方便阅读下文</p>
+<ul>
+<li>已拥有了PXVF3000-KIT</li>
+<li>已详细了解XVF3000 内置的前端算法AEC , BF , NS, AGC等</li>
+<li>已使用PXVF3000-KIT已经通过vfctrl_usb工具调试出理想的参数</li>
+<li>已确认XMOS XVF3000 4路麦克风阵列方案性能可满足导入项目产品中</li>
+</ul>
+<h3 id="概要">概要</h3>
+<p>使用XVF3000作为圆形4麦阵列方案的主控，需要了解硬件设计和软件设计，结合结构设计，才能使得产品顺利落地。并且根据我司现有的XMOS麦克风阵列方案，建议使用XVF3000来做桌面会议产品(Comms 方向)</p>
+<div class="alert alert-warning" role="alert" data-dir="ltr">如需要做语音识别（ASR方向）建议使用我们2麦阵列方案XVF3510方案。</div>
+<p>XVF3000项目导入前，根据下文的描述需要了解以下几点:</p>
+<ul>
+<li>XVF3000的硬件框架的确定</li>
+<li>熟悉USB的对产测和测试的作用</li>
+<li>XVF3000的固件获取, 烧录和更新</li>
+<li>XVF3000 DSP算法参数</li>
+<li>麦克风阵列的外壳结构的声学设计</li>
+<li>XVF3000的产测需具备的设备和测试的流程</li>
+<li>XVF3000过认证需要提前准备的工作</li>
+</ul>
+<h3 id="xvf3000-硬件基本框架">XVF3000 硬件基本框架</h3>
+<p>XVF3000芯片基本特性如下:</p>
+<ul>
+<li>商用温度等级（0 °C to 70 °C）</li>
+<li>TQ128 封装</li>
+<li>580mA典型工作电流，700mW左右（固件运行）</li>
+<li>内置了16Mbit QSPI Flash</li>
+<li>I/O 驱动能力为4mA</li>
+<li>订购型号：XVF3000-TQ128-CA； 丝印：VSM01C</li>
+</ul>
+<p>XVF3000 硬件系统最小系统如下图。XVF3000 圆形4路麦克风阵列根据音频传输接口的不同，大体分为如下三种硬件框架。用户根据项目需求选择其一，并且以确定硬件上是否需要设计ADC和DAC。</p>
+<p><p class="md__image">
+  <img src="/pxvf3000/img/project_img/small_system.png" alt=""  />
+</p></p>
+<h4 id="使用usb连接host--usb_inout">使用USB连接Host | USB_in&amp;out</h4>
+<p>Host主机的音频传输都通过XVF3000的USB来输入输出，XVF3000作为一个USB Audio声卡设备，产品应用一般为外置的拾音设备。<br />
+其框架如下图，其中：</p>
+<ul>
+<li>XVF3000前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过USB接口输入给Host</li>
+<li>Host播放声音时通过USB声卡播放输出，XVF3000为声卡设备，XVF3000的AEC参考信号在USB协议音频传输过程中获取</li>
+<li>XVF3000 USB UAC1.0包含传输音频输入输出、vfctrl_usb和dfu_usb，UAC输入输出的音频格式为16KHz/48KHz<br />
+<p class="md__image">
+  <img src="/pxvf3000/img/project_img/usb_in_out.png" alt=""  />
+</p></li>
+</ul>
+<h4 id="使用usb连接host--analog_ref">使用USB连接Host | Analog_ref</h4>
+<p>XVF3000通过USB输入声音给host主控，Host主控提供模拟AEC参考信号给XVF3000。</p>
+<p>其框架如下图，其中：</p>
+<ul>
+<li>XVF3000前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过USB接口输入给Host</li>
+<li>Host提供播放声音的参考信号给XVF3000做回音消除的参考信号，ADC采集Host端的模拟声音传输给XVF3000</li>
+<li>XVF3000 USB UAC1.0包含传输音频输入、vfctrl_usb和dfu_usb，UAC输入的音频格式为16KHz/48KHz</li>
+</ul>
+<p><p class="md__image">
+  <img src="/pxvf3000/img/project_img/usb_in_analog_ref.png" alt=""  />
+</p></p>
+<h4 id="使用i2s连接host-i2s_inout">使用I2S连接Host| I2S_in&amp;out</h4>
+<p>该框图不常用，仅推荐XVF3000需要连接WiFi/蓝牙时使用，并且建议Host(无线模组)的I2S需要做I2S slave模式，因为XVF3000需要音频时钟做16KHz的音频算法处理</p>
+<p>其框图如下图，其中：</p>
+<ul>
+<li>XVF3000前端信号处理完后，提供干净的声音(Comms/ASR)给Host进行会议通话，通过I2S接口输入给Host</li>
+<li>Host提供播放声音的参考信号给XVF3000做回音消除的参考信号，Host通过I2S传输给XVF3000</li>
+<li>I2S协议要求16KHz/48KHz 16bit，64fs, 标准I2S，其两路I2S共用时钟线MCLK，BCLK，LRCLK</li>
+<li>预留USB接口，方便工程样机的调试和产测。</li>
+</ul>
+<p><p class="md__image">
+  <img src="/pxvf3000/img/project_img/i2s_in_out.png" alt=""  />
+</p></p>
+<h3 id="xvf3000-固件基本框架">XVF3000 固件基本框架</h3>
+<h4 id="asr-和-comms-的选择">ASR 和 Comms 的选择</h4>
+<p>XVF3000 固件麦克风阵列算法DSP 运行后，可同时提供两路前端处理后的声音信号输出，且其分别为用于语音识别（<strong>ASR</strong>，Automatic Speech Recognition ）和用于会议电话（<strong>Comms</strong>, communication and conferencing）。用户根据产品需求，可以选择ASR信号和Comms信号同时输出，或者选择其中一个输出。</p>
+<p><strong>ASR</strong><br />
+ASR信号主要是用于语音识别，接入类似Alexa等各大语音识别引擎平台，做语音交互使用。ASR信号整体的特征是人声清晰，频谱比较丰满，降噪系数较小，以满足语音高识别率。</p>
+<p><strong>Comms</strong><br />
+Comms信号主要是用于会议通话使用，类似接入微软的teams, skype和企业微信或者钉钉等会议产品使用。Comms信号整体的特征是底噪比较小，由于降噪系数比较大，其频谱比较干净明显。</p>
+<h4 id="aec参考信号选择">AEC参考信号选择</h4>
+<p>XVF3000仅支持mono（单声道）参考信号，固件中默认选择立体声中的右声道(Right channel)作为AEC的参考信号，所以产品中的喇叭建议使用1个喇叭，或者2个喇叭都由右声道(Right channel)输出。AEC回音消除所需要的参考信号有两种方式提供给XVF3000</p>
+<p><strong>选择 USB UAC 提供AEC参考信号</strong></p>
+<p>USB UAC作为声卡播放的时候，播放的声音信号经过XVF3000时，XVF3000已经copy了参考信号提供给AEC算法模块使用。但是，后级的DAC和功放都需要保持线性输出，喇叭播放出的声音不能有EQ处理。如有EQ处理，则喇叭播放出来的声音跟已提供的参考信号已经失去了线性的对比，结果会导致AEC性能发挥不好。</p>
+<p><strong>选择 I2S(ADC)模拟提供AEC参考信号</strong></p>
+<p>需要增加I2S接口接入数字参考信号或者增加ADC接入模拟参考信号提供给XVF3000 AEC算法模块使用。建议在功放前选择右声道信号提供给ADC。同理，功放后级不能有EQ处理。</p>
+<h3 id="烧录方式的选择">烧录方式的选择</h3>
+<p>XVF3000芯片可以使用XMOS专用XTAG进行烧录，也可以使用QSPI flash 烧录器进行PCBA烧录和裸片烧录factory固件。同时可以通过dfu_usb工具更新dfu固件。根据产线实际情况，进行评估和选择。</p>
+<p>木瓜电子通常会提供3种后缀命名的固件，分别为xxx.xe, xxx_factory.bin和xxx.dfu。这三者中，xxx.xe和xxx_factory.bin都统称为factory固件，xxx.dfu称为更新固件。其中</p>
+<ul>
+<li>xxx.xe固件由XMOS IDE编译生成，仅能通过XTAG调试工具烧录到XVF3000芯片，其烧录时间上，效率很低。</li>
+<li>xxx_factory.bin固件由xxx.xe通过XMOS IDE导出，仅能通过spi flash烧录器烧录，效率较高。</li>
+<li>xxx.dfu更新固件由xxx.xe通过XMOS IDE结合QSPI Flash型号信息来导出，仅能通过USB dfu_usb工具进行更新固件。更新固件后，需要重启XVF3000才会正常运作更新后的固件。</li>
+</ul>
+<div class="alert alert-warning" role="alert" data-dir="ltr">使用dfu_usb工具进行更新固件的前提是:XVF3000已经烧录了factory固件，XVF3000能够正常运作，USB能够在操作系统枚举成功，</div>
+<h4 id="xxxxe的烧录方式">xxx.xe的烧录方式</h4>
+<p>用户需要拥有XMOS的专用<a href="https://www.xmos.ai/xtag-debug-adapter/" target="_blank">XTAG调试工具</a>，并且下载和安装<a href="https://www.xmos.ai/software-tools/" target="_blank">xTimecomposer</a> IDE。<br />
+运行其Command prompt 工具，确保上电XVF3000硬件和接好XTAG，键入指令如下, Enter键后，查看XVF3000和XTAG是否握手成功</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xflash -l
+</code></pre></td></tr></table>
+</div>
+</div><p>键入类似如下的XTAG指令，Enter键后烧录完毕即可</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell">xflash xxx.xe 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="xxx_factorybin的烧录方式">xxx_factory.bin的烧录方式</h4>
+<p>无论是XVF3000板载烧录还是裸片烧录，都需要留出XVF3000的flash point，以便spi flash烧录器能够访问XVF3000内置的QSPI Flash。同时需要确保XVF3000的3V3和1V0供电正常，并且XVF3000的RST_N引脚提前拉低，确保XVF3000在整个烧录过程处于复位状态</p>
+<p>用户需要拥有支持QSPI Flash芯片的flash烧录器，在其上位机选择使用QE=1的烧录方式，操作参考下图：</p>
+<ol>
+<li>检测芯片型号或者选择IS25LP016D(旧版本的XVF3000内置flash的信号为IS25LQ16B)</li>
+<li>加载xxx_factoy.bin固件</li>
+<li>打开配置选项</li>
+<li>选择QE=1,后确定</li>
+<li>勾选写入配置</li>
+<li>开始烧录</li>
+</ol>
+<p><p class="md__image">
+  <img src="/pxvf3000/img/project_img/flash_setting.png" alt=""  />
+</p></p>
+<h3 id="固件开发">固件开发</h3>
+<p>木瓜电子可以为用户提供factory固件和DFU更新固件，用户采购一些XVF3000样品，可以申请由木瓜电子预烧录factory固件，在样机阶段，都可以使用DFU进行更新固件。</p>
+<p>如用户需要整个固件源代码，可以在XMOS官网下载，或者发邮件到pxvf3000@pawpaw.hk向木瓜电子申请。提供源代码之后，客户结合文件包内的文档和XMOS官方的文档自行编程，木瓜电子不考虑在XVF3000的代码问题上提供技术解答。</p>
+<h3 id="声学要求">声学要求</h3>
+<p>XVF3000 圆形麦克风阵列的DSP性能跟声学和结构设计有很大关系。在硬件设计前，须提前先了解声学设计的要求。PDM MEMS麦克风有两种拾音孔，分为顶部拾音和底部拾音，这两种麦克风的声学电气特性几乎一致。XVF3000 算法对麦克风电气参数要求不高，通常选择的特性在如下范围左右即可</p>
+<ul>
+<li>Sensitivity: -26 dB FS</li>
+<li>SNR: 64 dBA</li>
+<li>AOP: 120 dB SPL</li>
+</ul>
+<h4 id="麦克风密封性">麦克风密封性</h4>
+<p>密封主要是为了确保麦克风的拾音孔仅在结构外壳的拾音腔孔获取外界的声音，避免声音进入到结构内部来回反射产生较严重的混响。声学设计参考下图<br />
+<p class="md__image">
+  <img src="/pxvf3000/img/project_img/mic_seal.png" alt=""  />
+</p><br />
+在硬件设计时，需要提前考虑麦克风的密封性的设计，通常产品是增加密封胶套来实现密封性能，并且在硬件上需要预留密封胶套的位置以吻合产品结构声学需求。</p>
+<h4 id="麦克风避震性">麦克风避震性</h4>
+<p>避震主要是为了喇叭播放声音时音腔产生的震动不传导到麦克风板，进而避免影响麦克风的拾音。建议在设计喇叭音腔跟麦克风有足够的距离，并且有绝对的隔绝。</p>
+<h4 id="麦克风声压">麦克风声压</h4>
+<p>麦克风的AOP通常在120 dB左右，如果声音信号超过该值，则会导致麦克风拾音出现截幅，导致声音失真。</p>
+<p>XVF3000的AEC性能做到最高50dB抑制，建议喇叭的声音在麦克风端录音不超过100dB。 如超过该值，则大概会有50dB以上的回音残余在输出的信号中，50dB以上残余回音 较为容易被人耳辨识出来。体现的结果是AEC性能不好</p>
+<p>喇叭和麦克风尽量避免同一朝向，建议形成90度或者180度的朝向</p>
+<h4 id="麦克风一致性">麦克风一致性</h4>
+<p>4路麦克风拾音信号需要保持高一致性，在组装结构外壳是，需要统一录制4路麦克风原始信号，进行分析去一致性，重点是体现在幅值和频谱特性。</p>
+<p>4路麦克风信号的一致性要求为整个XVF3000项目的基本要求，阵列麦克风才能发挥其应有的性能</p>
+<h3 id="产线测试">产线测试</h3>
+<p>XVF3000导入试产量产阶段,须要确认产线具备XVF3000烧录以及录音测试。设计XVF3000烧录固件的治具,预留出的flash point能够访问XVF3000进行flash写入。建议使用6通道的固件, 确保4个麦克风正常运作,以及做信号一致性分析。</p>
+<blockquote>
+<p>ch0:Comms; ch1:mic0; ch2:mic1; ch3:mic2; ch4:mic3; ch5: mono aec_ref</p>
+</blockquote>
+<p>在确定无硬件问题之后,使用dfu_usb更新最终的1通道或者2通道的dfu固件以实现最终产品。</p>
+<blockquote>
+<p>ch0:Comms; ch1:ASR</p>
+</blockquote>
+<h3 id="产品过认证">产品过认证</h3>
+<p>XVF3000解决方案能够通过Alexa 的ASR认证和微软的Skype等Comms认证。如产品确定需要过认证, 在产品处于basic版本时, 用户需要有足够熟悉和了解XVF3000 DSP的参数以及阵列的各项知识。根据认证产商的要求, 在产品调整XVF3000 DSP参数以实现过认证。由于每个产品的声学结构都会影响XVF3000 DSP参数的指示, 所以木瓜电子无法在认证方面提供XVF3000 的DSP 参考值,并且不参与整个过认证流程。</p>
+
+  </article>
+</div>
+      
+<div class="grow"></div>
+<nav class="pagination-single">
+  
+    
+      <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/xvf3000_hw_deseign/" title="XVF3000硬件设计" class="pagination-single__left">
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M19 11H7.83l4.88-4.88c.39-.39.39-1.03 0-1.42-.39-.39-1.02-.39-1.41 0l-6.59 6.59c-.39.39-.39 1.02 0 1.41l6.59 6.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L7.83 13H19c.55 0 1-.45 1-1s-.45-1-1-1z"/></svg>
+        </div>
+        <div class="pagination-single__right-title">XVF3000硬件设计</div>
+      </a>
+    
+    <div class="grow"></div>
+    
+      <a href="https://docs.pawpaw.ltd/docs/pxvf3000-kit/pxvf3000-kit_dsp_desc/" title="PXVF3000-KIT_dsp_描述" class="pagination-single__right">
+        <div class="pagination-single__left-title">PXVF3000-KIT_dsp_描述</div>
+        <div class="pagination-single__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="currentColor" d="M5 13h11.17l-4.88 4.88c-.39.39-.39 1.03 0 1.42.39.39 1.02.39 1.41 0l6.59-6.59c.39-.39.39-1.02 0-1.41l-6.58-6.6c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L16.17 11H5c-.55 0-1 .45-1 1s.45 1 1 1z"/></svg>
+        </div>
+      </a>
+    
+  
+</nav>
+
+
+      
+    </article>
+    
+    <section id="list-side" class="r" data-dir="ltr">
+      
+        <div class="toc">
+  <h6 class="toc__label"></h6>
+  <div class="toc__body">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#阅读前确认">阅读前确认</a></li>
+            <li><a href="#概要">概要</a></li>
+            <li><a href="#xvf3000-硬件基本框架">XVF3000 硬件基本框架</a>
+              <ul>
+                <li><a href="#使用usb连接host--usb_inout">使用USB连接Host | USB_in&amp;out</a></li>
+                <li><a href="#使用usb连接host--analog_ref">使用USB连接Host | Analog_ref</a></li>
+                <li><a href="#使用i2s连接host-i2s_inout">使用I2S连接Host| I2S_in&amp;out</a></li>
+              </ul>
+            </li>
+            <li><a href="#xvf3000-固件基本框架">XVF3000 固件基本框架</a>
+              <ul>
+                <li><a href="#asr-和-comms-的选择">ASR 和 Comms 的选择</a></li>
+                <li><a href="#aec参考信号选择">AEC参考信号选择</a></li>
+              </ul>
+            </li>
+            <li><a href="#烧录方式的选择">烧录方式的选择</a>
+              <ul>
+                <li><a href="#xxxxe的烧录方式">xxx.xe的烧录方式</a></li>
+                <li><a href="#xxx_factorybin的烧录方式">xxx_factory.bin的烧录方式</a></li>
+              </ul>
+            </li>
+            <li><a href="#固件开发">固件开发</a></li>
+            <li><a href="#声学要求">声学要求</a>
+              <ul>
+                <li><a href="#麦克风密封性">麦克风密封性</a></li>
+                <li><a href="#麦克风避震性">麦克风避震性</a></li>
+                <li><a href="#麦克风声压">麦克风声压</a></li>
+                <li><a href="#麦克风一致性">麦克风一致性</a></li>
+              </ul>
+            </li>
+            <li><a href="#产线测试">产线测试</a></li>
+            <li><a href="#产品过认证">产品过认证</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+      
+    </section>
+
+  </div>
+</div>
+
+<script>
+  'use strict';
+  
+  function wrap(el, wrapper) {
+    el.parentNode.insertBefore(wrapper, el);
+    wrapper.appendChild(el);
+  }
+
+  (function () {
+    var singleContentsElem = document.querySelector('.single__contents');
+    singleContentsElem ? 
+    singleContentsElem.querySelectorAll('pre > code').forEach(function(elem) {
+      var dataLang = elem.getAttribute('data-lang');
+      var dataLangWrapper = document.createElement('div');
+      var code = null;
+      var codeTitle = null;
+
+      if (dataLang && dataLang.includes(':')) {
+        code = dataLang.split(':')[0];
+        codeTitle = dataLang.split(':')[1];
+
+        dataLangWrapper.className = 'language-' + code;
+        dataLangWrapper.setAttribute('data-lang', codeTitle);
+
+        elem.className = 'language-' + code;
+        elem.setAttribute('data-lang', codeTitle);
+        elem.setAttribute('id', codeTitle);
+      }
+
+      if (!dataLang || codeTitle) {
+        wrap(elem.parentNode, dataLangWrapper);
+      }
+
+    }) : null;
+  })();
+  
+
+
+  
+  
+  var dollarCodeElem = document.querySelectorAll('div.language-\\$');
+  var gtCodeElem = document.querySelectorAll('div.language-\\>');
+  
+  dollarCodeElem ?
+  dollarCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '$<br/>';
+    }) : null;
+  }) : null;
+
+  gtCodeElem ?
+  gtCodeElem.forEach(function(elem) {
+    var lnts = elem.parentNode.parentNode ? elem.parentNode.parentNode.querySelectorAll('.lnt') : null;
+    lnts ? 
+    lnts.forEach(function(lnt) {
+      lnt.innerHTML = '><br/>';
+    }) : null;
+  }) : null;
+  
+</script>
+
+
+
+
+<script defer src="/js/helper/getParents.min.js"></script>
+
+<script defer src="/js/helper/closest.min.js"></script>
+
+<script defer src="/js/helper/prev.min.js"></script>
+
+<script defer src="/js/helper/prop.min.js"></script>
+
+<script defer src="/js/helper/fadeinout.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+    
+    
+    var tables = document.querySelectorAll('.single__contents > table');
+    for (let i = 0; i < tables.length; i++) {
+      var table = tables[i];
+      var wrapper = document.createElement('div');
+      wrapper.className = 'table-wrapper';
+      table.parentElement.replaceChild(wrapper, table);
+      wrapper.appendChild(table);
+    }
+    
+
+
+    
+    
+    
+    var lib = JSON.parse("null");
+
+    if (lib && lib.includes('mermaid')) {
+      var themeVariant = localStorage.getItem('theme') || 'light';
+
+      if (themeVariant === "dark") {
+        mermaid.initialize({ theme: 'dark' });
+      } else {
+        mermaid.initialize({ theme: 'default' });
+      }
+      
+      var mermaids = [];
+      [].push.apply(mermaids, document.getElementsByClassName('language-mermaid'));
+      mermaids.forEach(function(elem) {
+        var elemParentNode = elem.parentNode;
+
+        if (elemParentNode !== document.body) {
+          elemParentNode.parentNode.insertBefore(elem, elemParentNode);
+          elemParentNode.parentNode.removeChild(elemParentNode);
+        }
+
+        var newElemWrapper = document.createElement('div');
+        newElemWrapper.classList.add('mermaid');
+        newElemWrapper.innerHTML = elem.innerHTML;
+        elem.replaceWith(newElemWrapper);
+      });
+    }
+    
+    
+
+    
+    if (lib && lib.includes('katex')) {
+      var mathElements = document.getElementsByClassName('math');
+      var options = {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "\\[", right: "\\]", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false }
+        ],
+      };
+
+      renderMathInElement(document.querySelector('.single__contents'), options);
+    }
+    
+
+
+    
+    if (lib && lib.includes('flowchartjs')) {
+      
+      var options = JSON.parse("{\"arrow-end\":\"block\",\"element-color\":\"black\",\"fill\":\"white\",\"flowstate\":{\"approved\":{\"fill\":\"#58C4A3\",\"font-size\":12,\"no-text\":\"n/a\",\"yes-text\":\"APPROVED\"},\"current\":{\"fill\":\"yellow\",\"font-color\":\"red\",\"font-weight\":\"bold\"},\"future\":{\"fill\":\"#FFFF99\"},\"invalid\":{\"fill\":\"#444444\"},\"past\":{\"fill\":\"#CCCCCC\",\"font-size\":12},\"rejected\":{\"fill\":\"#C45879\",\"font-size\":12,\"no-text\":\"REJECTED\",\"yes-text\":\"n/a\"},\"request\":{\"fill\":\"blue\"}},\"font-color\":\"black\",\"font-size\":14,\"line-color\":\"black\",\"line-length\":50,\"line-width\":3,\"no-text\":\"no\",\"scale\":1,\"symbols\":{\"end\":{\"class\":\"end-element\"},\"start\":{\"element-color\":\"green\",\"fill\":\"yellow\",\"font-color\":\"red\"}},\"text-margin\":10,\"x\":0,\"y\":0,\"yes-text\":\"yes\"}");
+      var jsonContent = null;
+
+      var flowchartPrefix = "language-flowchart";
+      var index = 0;
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + flowchartPrefix + "]"), function(x){
+          x.style.display = 'none'
+          x.parentNode.style.backgroundColor = "transparent"
+          jsonContent = x.innerText;
+
+          var node0 = document.createElement('div');
+          node0.id = 'flowchart' + index;
+          x.parentNode.insertBefore(node0, x);
+
+          var diagram = flowchart.parse(jsonContent);
+          diagram.drawSVG("flowchart"+index, options);
+
+          index +=1;
+      });      
+    }
+    
+
+
+    
+    if (lib && lib.includes('chart')) {
+      var borderColor = "#666";
+      var bgColor = "#ddd";
+      var borderWidth = 2;
+
+      Chart.defaults.global.elements.rectangle.borderWidth = borderWidth;
+      Chart.defaults.global.elements.rectangle.borderColor = borderColor;
+      Chart.defaults.global.elements.rectangle.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.line.borderWidth = borderWidth;
+      Chart.defaults.global.elements.line.borderColor = borderColor;
+      Chart.defaults.global.elements.line.backgroundColor = bgColor;
+
+      Chart.defaults.global.elements.point.borderWidth = borderWidth;
+      Chart.defaults.global.elements.point.borderColor = borderColor;
+      Chart.defaults.global.elements.point.backgroundColor = bgColor;
+
+      var chartPrefix = "language-chart";
+      var index = 0;
+      var jsonContent = null;
+
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + chartPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        jsonContent = x.innerText;
+        var node0 = document.createElement('canvas');
+        var source = null;
+        node0.height = 200;
+        node0.style.height = 200;
+        node0.id = 'myChart' + index;
+        source = JSON.parse(jsonContent);
+        x.parentNode.insertBefore(node0, x);
+        var ctx = document.getElementById('myChart' + index).getContext('2d');
+        var myChart = new Chart(ctx, source);
+        index += 1;
+      });            
+    }
+    
+
+
+    
+    if (lib && lib.includes('viz')) {
+      var vizPrefix = "language-viz-";
+      Array.prototype.forEach.call(document.querySelectorAll("[class^=" + vizPrefix + "]"), function (x) {
+        x.style.display = 'none'
+        x.parentNode.style.backgroundColor = "transparent"
+        var engine;
+        x.getAttribute("class").split(" ").forEach(function (cls) {
+          if (cls.startsWith(vizPrefix)) {
+            engine = cls.substr(vizPrefix.length);
+          }
+        });
+        var viz = new Viz();
+        viz.renderSVGElement(x.innerText, { engine: engine })
+          .then(function (element) {
+            element.style.width = "100%";
+            x.parentNode.insertBefore(element, x);
+          })
+      });
+    }
+    
+    
+  });
+</script>
+
+<script>
+  var listSide = document.getElementById('list-side');
+  var listMain = document.getElementById('list-main');
+  var singleMenu = document.getElementById('single-menu');
+  var switchElem = document.querySelector('.switch');
+  var wideViewAsDefault = JSON.parse("null");
+  
+  enquire.register("screen and (max-width:1280px)", {
+    match: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';  
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        listSide.className = 'r';
+        listMain.className = 'm';
+        singleMenu.className = 'l';
+      }
+    },
+  }).register("screen and (max-width:960px)", {
+    match: function () {
+      singleMenu.className = 'l';
+      listMain.className = 'mr';
+      listSide.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      if (wideViewAsDefault) {
+        singleMenu.className = 'l';
+        listMain.className = 'mr';
+        listSide.className = 'hide';
+      } else {
+        singleMenu.className = 'l';
+        listMain.className = 'm';
+        listSide.className = 'r';
+      }
+      switchElem.className = 'switch';
+    },
+  }).register("screen and (max-width:600px)", {
+    match: function () {
+      listSide.className = 'hide';
+      listMain.className = 'lmr';
+      singleMenu.className = 'hide';
+      switchElem.className = 'hide';
+    },
+    unmatch: function () {
+      listSide.className = 'hide';
+      listMain.className = 'mr';
+      singleMenu.className = 'l';
+      switchElem.className = 'hide';
+    },
+  });
+</script>
+
+        
+<div class="bot">
+  <footer class="footer">
+    <div class="divider">
+      <div class="lmr">
+        
+          <p class="caption">
+            版权所有 © 2020 深圳市木瓜电子科技有限公司  |  <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery">粤ICP备2021009045号</a>
+          </p>
+          
+        
+      </div>
+    </div>
+  </footer>
+</div>
+
+    </div>
+
+</body>
+
+</html>

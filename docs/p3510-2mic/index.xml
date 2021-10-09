@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>P3510-2MIC on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/docs/p3510-2mic/</link>
+    <description>Recent content in P3510-2MIC on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Sat, 11 Jan 2020 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/docs/p3510-2mic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>P3510-2MIC_硬件使用</title>
+        <link>https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_usage/</guid>
+        <description>概要 P3510-2MIC是针对XMOS的XK-XVF3510-L71 开发板的硬件升级，优化了硬件设计及布局，更加适合用户直接使用和项目评估。完全兼容XMOS的XK-XVF3510-L71 开发板，所用的DSP芯片为XVF3510.pdf)。XMOS最新更新发布的XVF3510的UA固件完全适用于P3510-2MIC。
+P3510-2MIC为2麦阵列设备，作为前端信号处理，实现语音增强，可同时输出两路前端处理后的声音信号，且其分别为用于语音识别（ASR，Automatic Speech Recognition ）和用于会议电话（Comms, communication and conferencing）。支持使用USB Audio Class 1协议（UAC1.0）传输音频 ，支持所有流行的操作系统（Windows , MAC, Linux和Android），允许作为USB声卡设备枚举接入操作系统中。
+P3510-2MIC内置了立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法，非常有效地实现在远距离和嘈杂环境提高语音识别率和通话质量。使用USB 接口快速接入各种操作系统，同时配套提供了多套固件，非常适用用户迅速接入语音产品中。
+版本    产品版本 修改 发布时间     P3510-2MIC V1 初次发布 2020年10月15日    特点   远距离拾音
+  支持USB Audio Class 1.0 (UAC 1.0)
+  支持USB HID 调试
+  2路麦克风阵列
+  支持3.5mm耳机孔作为模拟AEC参考信号
+  DSP 算法和特点
+· Voice Activity Detection(VAD)</description>
+      </item>
+      
+      <item>
+        <title>P3510-2MIC_调试笔记</title>
+        <link>https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_debug_note/</link>
+        <pubDate>Tue, 28 Jan 2020 00:38:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/p3510-2mic/p3510-2mic_debug_note/</guid>
+        <description>概要 本文档主要是指引用户在使用P3510-2MIC配套提供的固件不能满足需求时，如何进行自行配置P3510-2MIC的参数（寄存器），如何自行更新自制的固件。
+P3510-2MIC预留了较多的控制和DSP算法参数可供用户进行配置，以实现用户最终需求。这些可以参数都体现在XMOS官方文档XVF3510-User-Guide中，本文档鉴于官方文档，根据木瓜电子内部技术工程师和其他的用户的真实案例，整理调试笔记，提供给用户作为参考借鉴。
+前提  用户需拥有P3510-2MIC评估板，并且根据查阅P3510-2MIC的硬件使用文档能够实现使用Audacity进行录音 用户在windows系统上已经安装了XMOS Control的驱动，XMOS Control设备枚举主要是用来对P3510-2MIC进行指令控制，包含了DSP算法参数调整和XVF3510的固件更新 用户已经获取了P3510-2MIC评估板的资料包，并且已经自行下载安装python 3, 用户生成自制的XVF3510固件需要有python的环境支持。 用户需要明确需求，使用P3510-2MIC评估板是作为语音识别（ASR，Automatic Speech Recognition ）还是会议通话（Comms, communication and conferencing）测试使用，还是两者都需要。  DSP 概念 AEC（Acoustic Echo Cancellation, 回音消除），回音消除的作用主要是消除本设备（类似P3510-2MIC）麦克风拾取到来自远端的声音在本设备扬声器（喇叭）播放出来的声音，即形同于扬声器播放的声音不要再被麦克风设备重新采集。AEC算法过程中需要远端音频声源作为参考信号给到P3510-2MIC设备，才能消除扬声器播放的回声声音，形象理解为需要消除哪些声音，就提供对应声音信号作为参考信号给P3510-2MIC设备。
+VAD (Voice Activity Detection , 人声活动检测)，人声检测的作用是实时判断环境中是否有人声存在。
+IC（Interference Cancellation，干扰源消除），干扰源消除的作用主要是消除环境中固定的位置点发出的干扰声音信号，该信号视为为干扰信号被P3510-2MIC消除。IC算法不需要接入参考信号，但会存在一个收敛时间过程，在干扰源信号的位置和P3510-2MIC的位置相对固定，并且有VAD人声检测后即可实现收敛消除。
+NS (Noise Suppression, 噪声抑制)，噪声抑制的作用主要是抑制抑制来自其频率特性不会随时间瞬时变化的噪声源。其中包括散射的背景噪声和固定噪声源，类似于稳态噪声和非稳态噪声。
+AGC（Automatic Gain Control，自动增益控制），自动增益的作用主要是可以动态调整音频增益，或设定固定增益，使声音保持所需的输出电平。
+工具 vfctrl_usb工具是使用来进行写入和读取P3510-2MIC的DSP参数(寄存器)或者其他控制参数，如XVF3510内置的立体声回音消除（AEC） , 点噪消除（IC），噪声抑制（NS）和自动增益（AGC）算法参数数值，或者设定具体的功能与参数，最终达到所需要的音频效果。
+dfu_usb工具是使用来进行对P3510-2MIC进行固件DFU更新（Device Firmware Update ）,如更新P3510-2MIC的配套固件和用户自制的固件。
+在windows系统上，以上两个工具的使用前提都需要安装XMOS Control的驱动，依托windows系统的cmd工具运行。快捷键WIN+R ,输入cmd ,确认打开cmd界面，使用cd指令进入到vfcrtl_usb工具的存放路径，类似键入指令如下后，进行使用vfctrol_usb工具
+cd /d D:\XVF3510\XVF3510-UA Unqualified Release_4.4.0\host\Win32\binDSP算法及声音流框图 参考XMOS官方文档XVF3510-User-Guide可以得到其DSP和声源流框图如下：
+上图所示，PDM MIC，AEC，IC，NS, AGC都是可以通过使用vfctrol_usb工具进行调整其对应的DSP参数的，并且整体XVF3510的DSP算法音频流程如下：
+ 两路PDM麦克风音频信号进行输入XVF3510 对采集到的信号传输给回音消除（AEC）来消除扬声器的回声 再经过干扰源消除（IC）对干扰源噪声（如洗衣机，收音机的噪声）进行消除 经过噪声抑制（NS）抑制环境稳态噪声（例如空调声） 通过自动增益（AGC）实现远距离拾音，或者调整声音大小 最终输出两种音频效果，分别为语音识别（ASR）和会议通话（Comms），可选其一。  需要注意的是，在默认的固件下，我们是使用USB立体声音轨中的ch0音轨输出ASR音频效果，使用ch1音轨输出Comms音频效果。在下文的算法调整中，ch0的相关参数代表与ASR输出有关，ch1的相关参数代表与Comms输出有关。如下图</description>
+      </item>
+      
+    
+  </channel>
+</rss>

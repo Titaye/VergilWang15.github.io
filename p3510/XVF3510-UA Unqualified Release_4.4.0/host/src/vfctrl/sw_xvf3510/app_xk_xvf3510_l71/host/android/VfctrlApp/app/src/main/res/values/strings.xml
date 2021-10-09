@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">XMOS Vfctrl</string>
+    <string name="action_settings">Settings</string>
+    <!--<string name="versions">versions.csv</string> !-->
+    <string name="xmos_device">xvf3510</string>
+    <string name="xmos_package_number">2.00</string>
+</resources>

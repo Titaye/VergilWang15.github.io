@@ -1,0 +1,82 @@
+Release Notes: XVF3510-UA and XVF3510-INT firmware version 4.1.0 (release candidate 1: build 200818 114508)
+==============================================================================================================
+
+
+Introduction
+============
+
+This note describes the version 4.1.0 release of the XVF3510 firmware. Except where explicitly mentioned, these release notes are relevant to both the -INT and -UA variants of the release. This version can be installed as a new factory image or as a DFU upgrade over version 4.0.0. This release is not compatible as a DFU upgrade over factory images prior to version 4.0.0
+
+
+How do I know if I have this software?
+======================================
+
+Using the appropriate vfctrl for your host (MAC, Win32, Linux or Pi) and control interface (i2c or usb) do:
+
+GET_VERSION
+Should respond: v4.1.0
+
+GET_BLD_HOST
+Should respond: Jenkins
+
+GET_BLD_REPO_HASH
+Should respond: 73a614
+
+GET_BLD_XGIT_VIEW
+Should respond: sw_xvf3510_master
+
+GET_BLD_XGIT_HASH
+Should respond: 9f4380
+
+GET_BLD_MODIFIED
+Should respond: false
+
+If all of these results are as given above you have the official XVF3510 firmware version 4.1.0 release. All of these results are given within the first few lines of a parameter dump (the -d option for vfctrl).
+
+
+What's in this release?
+=======================
+
+This release contains firmware binaries, host executables, and data partitions. Source code to allow the recompilation of host code and data partitions is also included.
+
+
+What's new in Version 4.1.0?
+============================
+
+The following list summarises changes that may be observed when using Version 4.1.0 of this firmware in comparison to the previously released versions. A full changelog is also included in the release package.
+
+Volume controls (XVF3510-UA only)
+---------------------------------
+
+The XVF3510-UA implements stereo volume in (to host) and volume out (from host) controls. These are reported by the USB descriptor. This feature resolves an issue reported for v4.0.0 when connected a Windows system. As a result, customers should note:
+1. It is important to ensure that host processor USB volumes are set appropriately. In particular inadvertently setting the volume out from the host to 0 (or muting) will prevent the Accoustic Echo Canceller from operating.
+2. Windows users who upgrade a device to v4.1.0 from an earlier version may not initially see the volume controls. This is because Windows incorrectly caches the previous USB descriptor. In this case audio drivers should be restarted by selecting "update driver" in the device manager and reselecting the existing driver.
+
+SPI Boot
+--------
+
+* A bug fix has been implemented such that the firmware does not start the SPI master if the device has been booted over SPI. This allows the host processor to continue to operate as the SPI master and configure other devices over the same SPI bus after booting the XVF3510.
+* Additional options are now available to permit tuning of SPI boot speed.
+
+Control commands
+----------------
+
+A small number of changes have been made to improve host control application diagnostics and robustness.
+
+
+
+Known issues in this release
+============================
+
+
+1. When used in a hybrid system implementing processed audio to the host over USB but reference audio over I2S, the XVF3510-UA still implements both USB audio in and out channels. This is known to cause issues with some USB host operating systems due to default audio path switching.
+Workaround:
+Configure your host to explicitly output audio to the correct audio interface.
+
+2. The data image generation loses the sign bit on Raspberry Pi. 
+Workaround:
+Data image generation should be done on desktop host, not Raspberry PI is the MSB of the Flashing register needs to be set.
+
+3. The output filters are configured for 48kSamples/s operation. 
+Workaround:
+16kSamples/s outputs should utilise coefficients for a 48k Samples/s filter and should expect outputs to be directly decimated by three. 

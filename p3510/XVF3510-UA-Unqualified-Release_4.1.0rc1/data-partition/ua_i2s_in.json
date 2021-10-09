@@ -1,0 +1,12 @@
+{
+    "comment": "",
+    "spispec_path": "16mbit_12.5mhz_sector_4kb.spispec",
+    "regular_sector_size": "4096",
+    "hardware_build": "0xFFFFFFFF",
+    "item_files": [
+        {
+            "path": "input/map_i2s_to_refs.txt",
+            "comment": ""
+        }
+    ]
+}
