@@ -2363,26 +2363,21 @@
 <div class="alert alert-warning" role="alert" data-dir="ltr"><strong>仅</strong>Windows系统系统需要按照UAC 2.0驱动，linux和MAC OS都不需要另外安装UAC 2.0驱动</div></p>
 <h4 id="安装驱动">安装驱动</h4>
 <p>Windows系统：</p>
-<p>评估板使用 USB Audio Class 2.0 作为传输协议，因此在window系统上需要安装第三方驱动，驱动压缩包是：USB-Audio-Class-2.0-Evaluation-Driver-for-Windows_4.13.0.zip。<br />
-压缩该文件后，得到的是一个.exe 文件，可以直接安装，但是我司建议不要如此安装，接着对该.exe 文件再一次进行解压得到文件<br />
-XMOS_TUSBAudio_eval_v4.13.0_2019-01-21_setup，其大体内容为，</p>
-<p><p class="md__image">
-  <img src="/pxua216mb/img/install_driver.png" alt=""  />
-</p></p>
-<p>确保评估板的USB已经和windows系统电脑，再点击运行文件夹了里面的setup_eval.exe 安装驱动程序。进入安装过程中，默认安装即可（一路点击 next，直接进行安装），UAC 2.0驱动安装完成后，windows设备管理器显示如图，则表示设备安装成功</p>
-<p>运行setup_eval.exe</p>
+<p>评估板使用 USB Audio Class 2.0 作为传输协议，因此在window系统上需要安装第三方驱动，驱动压缩包是：PawPaw_UsbAudio_v5.27.0_2021-11-03_setup.zip。<br />
+压缩该文件后，得到的是一个.exe 文件，可以直接安装，，默认安装即可（一路点击 next，直接进行安装），UAC 2.0驱动安装完成后，windows设备管理器显示如图，则表示设备安装成功</p>
+<p>运行PawPaw_UsbAudio_v5.27.0_2021-11-03_setup.exe</p>
 <ol>
 <li>确保评估板的USB已经和windows系统电脑</li>
 <li>默认安装即可（一路点击 next，直接进行安装）</li>
 <li>安装完成了后，则会出现类似如下图片显示</li>
-<li>评估板在设备管理器上枚举成了 XMOS USB 2.0 Audio Devices-&gt;XMOS XS1-U8 DJ(EVAL)</li>
+<li>评估板在设备管理器上枚举成了 Pawpaw USB  Audio Devices-&gt;Pawpaw  Microphone Array UAC2.0</li>
 </ol>
 <p><p class="md__image">
   <img src="/pxua216mb/img/installed_uac2.png" alt=""  />
 </p></p>
 <p>在声音界面进行设置和确认,</p>
-<p>1，在播放栏项，设置XMOS XS1-U8 DJ(EVAL)为默认设备,确认采样率是否为16bit，16000 Hz，禁用所有增强性能</p>
-<p>2，在录制栏项，设置XMOS XS1-U8 DJ(EVAL)为默认设备,确认采样率是否为 18通道 16bit，16000 Hz，禁用所有增强性能</p>
+<p>1，在播放栏项，设置Pawpaw  Microphone Array UAC2.0为默认设备,确认采样率是否为16bit，16000 Hz，禁用所有增强性能</p>
+<p>2，在录制栏项，设置Pawpaw  Microphone Array UAC2.0为默认设备,确认采样率是否为 18通道 16bit，16000 Hz，禁用所有增强性能</p>
 <p>3，同时确认播放和录制栏项的音频格式设置为一致，如16bit ，16000KHz或者16bit 48000KHz</p>
 <p><p class="md__image">
   <img src="/pxua216mb/img/soundcar_setting.png" alt=""  />
@@ -2400,7 +2395,7 @@ XMOS_TUSBAudio_eval_v4.13.0_2019-01-21_setup，其大体内容为，</p>
 <p>PXUA216MB-DL2-M评估板出厂默认固件为USB输入18ch 16kHz采样率的声源，其中ch[1-16]为16路麦克风原始信号，ch[17-18]为line-in的2路模拟信号，用户通常用来回音消除的参考信号。</p>
 <p>在其他操作系统如MAC OSX和Linux操作系统，Demo和录音的用法跟Windows类似。</p>
 <h4 id="固件和dfu升级">固件和DFU升级</h4>
-<p>评估板配套提供了4个固件，主要是USB的音频的采样率作为区别，参考下表。</p>
+<p>评估板配套提供了2个固件，主要是USB的音频的采样率作为区别，参考下表。</p>
 <table>
 <thead>
 <tr>
@@ -2412,38 +2407,24 @@ XMOS_TUSBAudio_eval_v4.13.0_2019-01-21_setup，其大体内容为，</p>
 </thead>
 <tbody>
 <tr>
-<td>app_usb_aud_mic_array_2i8o2_LINE_IN_16K_dfu</td>
+<td>app_usb_aud_mic_array_2i18o2_LINE_IN_PawPaw_16K_V101_DFU</td>
 <td>16000 Hz</td>
-<td>测试版（XMOS)</td>
-<td>出厂默认固件</td>
+<td>木瓜驱动</td>
+<td></td>
 </tr>
 <tr>
-<td>app_usb_aud_mic_array_2i8o2_LINE_IN_48K_dfu</td>
+<td>app_usb_aud_mic_array_2i18o2_LINE_IN_PawPaw_48K_V102_DFU</td>
 <td>48000 Hz</td>
-<td>测试版（XMOS）</td>
-<td></td>
-</tr>
-<tr>
-<td>app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_16K_dfu</td>
-<td>16000 Hz</td>
-<td>FIIO</td>
-<td></td>
-</tr>
-<tr>
-<td>app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_48K_dfu</td>
-<td>48000 HZ</td>
-<td>FIIO</td>
-<td></td>
+<td>木瓜驱动</td>
+<td>出厂默认固件</td>
 </tr>
 </tbody>
 </table>
-<p>其中测试板UAC驱动会有个BUG在驱动程序中，体现的现象为评估板每次插入windows电脑，运行超过1个小时后，每隔5分钟会有一个TUNE声。</p>
-<p>如果需要超过1个小时的长时间录制，建议更新固件和安装非测试版（XMOS）驱动。</p>
 <h4 id="dfu升级">DFU升级</h4>
 <p><strong>Windows系统</strong>：</p>
 <p>PXUA216MB-DL2-M评估板使用USB进行DFU升级的工具为TUSBAudioDfu.exe，在安装测试版驱动路径下找到</p>
-<p><em>\Thesycon\TUSBAudio Driver EVAL\W10_x64\TUSBAudioDfu.exe</em></p>
-<p>双击运行TUSBAudioDfu.exe ，操作如图显示的步骤：</p>
+<p><em>\PawPaw\USB Audio Device Driver\PawPawUsbAudioDfu\x64\PawPawUsbAudioDfu.exe</em></p>
+<p>双击运行PawPawUsbAudioDfu.exe ，操作如图显示的步骤：</p>
 <ol>
 <li>确认PXUA216MB-DL2-M设备显示成功</li>
 <li>选择xxx_dfu.bin固件</li>
@@ -2453,10 +2434,10 @@ XMOS_TUSBAudio_eval_v4.13.0_2019-01-21_setup，其大体内容为，</p>
 <p><p class="md__image">
   <img src="/pxua216mb/img/dfu_usb.png" alt=""  />
 </p></p>
-<div class="alert alert-warning" role="alert" data-dir="ltr"><strong>更</strong>新固件，如更新了app_usb_aud_mic_array_2i8o2_LINE_IN_FIIO_48K_dfu固件，则需要安装FIIO的UAC驱动</div>
 <p>PXUA216MB-DL2-M评估板现阶段仅支持使用Windows系统使用USB DFU进行更新。</p>
 <h3 id="支持和商务">支持和商务</h3>
 <p>PXUA216MB-DL2-M评估板全部的资料(<a href="/tool_app/doc_download/pxua216mb.zip.zip">点击下载</a>)<br />
+PXUA216MB-DL2-M评估板的上位机开发例程，请发送邮件申请下载 <a href="/mailto:support@pawpaw.hk">support@pawpaw.hk</a><br />
 PXUA216MB-DL2-M评估板目前不支持二次开发，并且其主控XU216芯片资源已经接近用完，所以建议用户把PXUA216MB-DL2-M当作一个声卡设备使用。在使用上遇到其他技术问题，可以邮件联系我们 <a href="/mailto:support.xmos@pawpaw.hk">support.xmos@pawpaw.hk</a>。</p>
 <p>PXUA216MB-DL2-M评估板目前没有开放其设计的原理图和PCB，但是我们支持用户的定制化，小型化，和项目导入，用户需要提供详细需求，由我司评估完成后对接起来。</p>
 <h3 id="faq">FAQ</h3>
