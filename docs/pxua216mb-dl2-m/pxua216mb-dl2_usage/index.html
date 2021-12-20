@@ -2364,7 +2364,7 @@
 <h4 id="安装驱动">安装驱动</h4>
 <p>Windows系统：</p>
 <p>评估板使用 USB Audio Class 2.0 作为传输协议，因此在window系统上需要安装第三方驱动，驱动压缩包是：PawPaw_UsbAudio_v5.27.0_2021-11-03_setup.zip。<br />
-压缩该文件后，得到的是一个.exe 文件，双击运行可以直接安装，，默认安装即可（一路点击 next，直接进行安装），UAC 2.0驱动安装完成后，windows设备管理器显示如图，则表示设备安装成功</p>
+压缩该文件后，得到的是一个.exe 文件，可以直接安装，，默认安装即可（一路点击 next，直接进行安装），UAC 2.0驱动安装完成后，windows设备管理器显示如图，则表示设备安装成功</p>
 <p>运行PawPaw_UsbAudio_v5.27.0_2021-11-03_setup.exe</p>
 <ol>
 <li>确保评估板的USB已经和windows系统电脑</li>
@@ -2407,13 +2407,13 @@
 </thead>
 <tbody>
 <tr>
-<td>app_usb_aud_mic_array_2i18o2_LINE_IN_16K_V101_DFU</td>
+<td>app_usb_aud_mic_array_2i18o2_LINE_IN_PawPaw_16K_V101_DFU</td>
 <td>16000 Hz</td>
 <td>木瓜驱动</td>
 <td></td>
 </tr>
 <tr>
-<td>app_usb_aud_mic_array_2i18o2_LINE_IN__48K_V102_DFU</td>
+<td>app_usb_aud_mic_array_2i18o2_LINE_IN_PawPaw_48K_V102_DFU</td>
 <td>48000 Hz</td>
 <td>木瓜驱动</td>
 <td>出厂默认固件</td>
@@ -2422,8 +2422,8 @@
 </table>
 <h4 id="dfu升级">DFU升级</h4>
 <p><strong>Windows系统</strong>：</p>
-<p>PXUA216MB-DL2-M评估板使用USB进行DFU升级的工具为TUSBAudioDfu.exe，在驱动压缩包的解压后路径下找到</p>
-<p><em>PawPawUsbAudioDfu\x64\PawPawUsbAudioDfu.exe</em></p>
+<p>PXUA216MB-DL2-M评估板使用USB进行DFU升级的工具为TUSBAudioDfu.exe，在安装测试版驱动路径下找到</p>
+<p><em>\PawPaw\USB Audio Device Driver\PawPawUsbAudioDfu\x64\PawPawUsbAudioDfu.exe</em></p>
 <p>双击运行PawPawUsbAudioDfu.exe ，操作如图显示的步骤：</p>
 <ol>
 <li>确认PXUA216MB-DL2-M设备显示成功</li>
@@ -2437,8 +2437,9 @@
 <p>PXUA216MB-DL2-M评估板现阶段仅支持使用Windows系统使用USB DFU进行更新。</p>
 <h3 id="支持和商务">支持和商务</h3>
 <p>PXUA216MB-DL2-M评估板全部的资料(<a href="/tool_app/doc_download/pxua216mb.zip">点击下载</a>)<br />
-PXUA216MB-DL2-M评估板的上位机开发例程，请发送邮件申请获得：support@pawpaw.hk<br />
+PXUA216MB-DL2-M评估板的上位机开发例程，请发送邮件申请下载 <a href="/mailto:support@pawpaw.hk">support@pawpaw.hk</a><br />
 PXUA216MB-DL2-M评估板目前不支持二次开发，并且其主控XU216芯片资源已经接近用完，所以建议用户把PXUA216MB-DL2-M当作一个声卡设备使用。在使用上遇到其他技术问题，可以邮件联系我们 <a href="/mailto:support.xmos@pawpaw.hk">support.xmos@pawpaw.hk</a>。</p>
+<p>PXUA216MB-DL2-M评估板目前没有开放其设计的原理图和PCB，但是我们支持用户的定制化，小型化，和项目导入，用户需要提供详细需求，由我司评估完成后对接起来。</p>
 <h3 id="faq">FAQ</h3>
 <h5 id="q1--是否支持其他采样率">Q1 : 是否支持其他采样率？</h5>
 <p>PXUA216MB-DL2-M评估板目前最高支持48 Khz采样率，期间无32 KHz和44.1 KHz采样率，做一般研究，16KHz和48KHz 采样率能够满足需求</p>
@@ -2448,7 +2449,15 @@ PXUA216MB-DL2-M评估板目前不支持二次开发，并且其主控XU216芯片
 <p>这个很大可能是由于麦克风板子和主板的连接线和连接端子松动造成，建议对线材重新插入和牢固即可；仍不行的话，可能是麦克风已经损坏，使用其他的麦克风板插入来判断一下。</p>
 <h5 id="q4--是否可以更换其他型号的麦克风">Q4 : 是否可以更换其他型号的麦克风</h5>
 <p>可以更换，不过需要用户自行设计和生产麦克风小板，我司提供了麦克风小板的原理和PCB资料，自行更换。</p>
-<h5 id="q5--两个pxua216mb-dl2-评估板同时接入到统一台电脑是否可以">Q5 : 两个PXUA216MB-DL2 评估板同时接入到统一台电脑是否可以？</h5>
+<h5 id="q5--更新固件之后audacity不能录音了">Q5 : 更新固件之后，audacity不能录音了</h5>
+<p>更新的固件需要安装对应的驱动，建议我司提供的两个UAC 驱动都安装了，压缩该文件后，得到的是一个.exe 文件，可以直接安装，但是我司建议不要如此安装，接着对该.exe 文件再一次进行解压得到文件<br />
+XMOS_TUSBAudio_eval_v4.13.0_2019-01-21_setup，其大体内容为，</p>
+<p><p class="md__image">
+  <img src="/pxua216mb/img/install_driver.png" alt=""  />
+</p></p>
+<p>确保评估板的USB已经和windows系统电脑，再点击运行文件夹了里面的setup_eval.exe 安装驱动程序</p>
+<p>关闭重新打开audacity，并且确保audacity设置正确。</p>
+<h5 id="q6--两个pxua216mb-dl2-评估板同时接入到统一台电脑是否可以">Q6 : 两个PXUA216MB-DL2 评估板同时接入到统一台电脑是否可以？</h5>
 <p>由于PXUA216MB-DL2 评估板有固定的USB VID 和PID , 如果两台同时接入则会则无法正常使用，建议用户联系我司技术，我们可以提供不同的固件以适应两个评估板设备同时使用，但其为枚举的情况为两个不同的声卡设备。</p>
 
   </article>
