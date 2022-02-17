@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PXUA_XU316_KIT on 木瓜电子</title>
+    <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/</link>
+    <description>Recent content in PXUA_XU316_KIT on 木瓜电子</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>版权所有 © 2020 深圳市木瓜电子科技有限公司  |  [粤ICP备2021009045号](https://beian.miit.gov.cn/#/Integrated/recordQuery)</copyright>
+    <lastBuildDate>Mon, 11 Jan 2021 14:09:21 +0900</lastBuildDate>
+    
+        <atom:link href="https://docs.pawpaw.ltd/docs/pxua_xu316_kit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+      
+      <item>
+        <title>PXUA-XU316-KIT_固件说明</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit%E5%9B%BA%E4%BB%B6%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BF%AE%E6%94%B9/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit%E5%9B%BA%E4%BB%B6%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%BF%AE%E6%94%B9/</guid>
+        <description>固件说明 评估板配套提供了多个固件，主要是USB音频支持规格以及接口作为区别，其中固件命名遵循XMOS USB audio 针对固件的命名方式，例如2i2o2mxxxxx固件表示支持USB Audio Class2.0，支持通道两入两出，支持MIDI,不支持SPDIF IN/OUT,不支持ADAT IN/OUT，不支持DSD，命名方式参考下表：
+ Audio Class: 1 or 2
+Input enabled: i (channelcount)
+Output enabled: o (channelcount)
+MIDI enabled: m, disabled: x
+SPDIF out enabled: s, disabled: x
+SPDIF in enabled: s, disabled: x
+ADAT out enabled: a, disabled: x
+ADAT in enabled: a, disabled: x
+DSD out enabled: d, disabled: x
+ 该文档只针对固件命名说明，方便用户后续烧录更新固件。
+固件 木瓜电子通常会提供3种后缀命名的固件，分别为xxx.xe, xxx_flash.bin和xxx_dfu.bin。其中：
+ xxx.xe固件由XMOS IDE编译生成，仅能通过XTAG调试工具烧录到XU316芯片，其烧录时间上，效率很低 xxx_flash.bin固件由xxx.xe通过XMOS IDE导出，仅能通过flash烧录器烧录，效率较高 xxx_dfu.bin更新固件由xxx.xe通过XMOS IDE结合Flash型号信息来导出，仅能通过USB dfu_usb工具进行更新固件。</description>
+      </item>
+      
+      <item>
+        <title>PXUA-XU316-KIT_源码修改说明</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/xu316%E6%BA%90%E7%A0%81%E5%BC%80%E5%8F%91%E8%AF%B4%E6%98%8E/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/xu316%E6%BA%90%E7%A0%81%E5%BC%80%E5%8F%91%E8%AF%B4%E6%98%8E/</guid>
+        <description>xu316源码修改说明 概述 本篇文章主要讲述xu316源码的基本功能使能、pin的定义、编译选项、XTC工具编译、烧录固件，DFU固件等
+详细的介绍需观看sw_usb_audio-[design-guide]_6.16.1alpha1.pdf文档，本文章讲述的基本代码使用说明，会遗漏其他要点
+基础文件 在XU316-1024-QF60B Datasheet.pdf中1 xCORE Multicore Microcontrollers部分
+有如下图所示，xu316共有16个core，定义在tile0、tile1上，各有8个core
+customdefines.h 主要包含：spdif、midi、mixer功能开启，out与in设定、pid_vid修改、晶振修改、dfu的spec等
+路径：app_usb_aud_xk_316_mc\src\core\customdefines.h
+1、在源码中xxxx_TILE的宏定义，代表运行在tile0还是tile1
+#define AUDIO_IO_TILE 0#define XUD_TILE 1上述代码表示Audio在tile0、USB(xud)在tile1运行
+2、包含一些开关功能的宏定义，下面代码为spdif输出功能开启
+#ifndef SPDIF_TX#define SPDIF_TX	1#endif其他宏定义类似，有MIXER、MIDI、SPDIF_RX、DFU、DSD_CHANS_DAC、HID_CONTROLS等
+3、输入输出通道数，如下代码定义为2进4出
+#ifndef NUM_USB_CHAN_IN#define NUM_USB_CHAN_IN (2) /* Device to Host */#endif#ifndef NUM_USB_CHAN_OUT#define NUM_USB_CHAN_OUT (4) /* Host to Device */#endif**注意：**定义通道数时，I2S_CHANS_DAC对应out通道数，I2S_CHANS_ADC对应in通道数
+/* Number of IS2 chans to DAC..*/#ifndef I2S_CHANS_DAC#define I2S_CHANS_DAC (4)#endif/* Number of I2S chans from ADC */#ifndef I2S_CHANS_ADC#define I2S_CHANS_ADC (2)#endif4、晶振一致性</description>
+      </item>
+      
+      <item>
+        <title>PXUA-XU316-KIT_硬件使用</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit_%E7%A1%AC%E4%BB%B6%E4%BD%BF%E7%94%A8/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit_%E7%A1%AC%E4%BB%B6%E4%BD%BF%E7%94%A8/</guid>
+        <description>概要 PXUA-XU316-KIT是 XMOS USB Audio 高性能和多功能评估板，主要实现了UAC 2.0(USB Audio Class 2.0)输出高清解析音频, 所用的XMOS 芯片为XU316-1024-QF60B-PP24设计成 XMOS USB AUDIO 高性能方案。
+XMOS USB Audio 方案提供兼容全速和高速的USB 2.0接口的USB AUdiO 声卡设备，PXUA-XU316-KIT评估板支持UAC 2.0和UAC 1.0 ;在USB 2.0 异步模式中，能够支持高达768 KHz的采样率
+PXUA-XU316-KIT 使用分层设计方式, 开发板主要为数字部分,没有音频模拟部分, 提供USB , I2S , TDM , DSD , MIDI ,S/PDIF等数字接口,开发预留出两排排针,以吻合多功能使用, 可以搭配木瓜电子的ES9038Q2M评估板,也可以搭配其他高端DAC 如AK4497 ,CS43198等;
+PXUA-XU316-KIT开发板能够实现USB声卡解码输出 768KHz 采样率和支持DSD Native; 同时支持多种数字音频接口和多个通道输入输出, 配套提供使用USB 进行更新的不同功能的多个固件, 能够协助用户进行USB Audio多种项目评估.
+版本    产品版本 修改 发布时间     PXUA-XU316-KIT 初步版本 2022年2月11日    特点  支持USB Audio Class 2.</description>
+      </item>
+      
+      <item>
+        <title>PXUA-XU316-KIT_硬件设计</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit_%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit_%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/</guid>
+        <description>1.阅读前确认 用户需要确认一下内容，以方便阅读下文
+ 已拥有了PXUA-XU316-KIT，且查阅PXUA-XU316-KIT_硬件使用 已查阅了XU316-1024-QF60B-PP24_Datasheet和参考设计 已确认PXUA-XU316-KIT USB Audio方案性能可满足导入项目产品中  2.XU316 datasheet 导读 查看XU316-1024-QF60B-PP24_Datasheet，其描述的为XU316裸片（不含固件）的硬件特性。了解基本的硬件数据，电气特性。
+基本特性 商用温度等级（0 °C to 70 °C）
+60-pin QFN封装 0.4mm间距
+300mA(3.3V &amp;amp; 1.8V &amp;amp;0.9V)典型工作电流
+I/O 驱动能力为4mA 订购型号：XU316-1024-QF60B-PP24； 丝印：V16A0 PP MCYYWW.P2
+电源 根据datasheet的最小系统框图，XU316的需要三路电压供应，3.3V、1.8V和0.9V。
+其中3.3V提供给I/O, USB , Flash等外设使用;
+0.9V提供给XU316逻辑核心使用;
+1.8V提供给USB物理层使用
+复位检测 与XU208不同，XU316不需要外部有复位检测芯片，XU316拥有on-chip Power-on-Reset(POR),在提供给XU316电源稳定后，POR复位整个设备到一个已定义的状态，包括PLL配置、XTAG逻辑、PHYs和核心。
+Flash XU316需要外置 Flash（QSPI Flash,类似GD25Q16C，PXUA-XU316-KIT评估板使用的是QSPI Flash），其主要是存储固件，所以项目设备需要预先烧录固件方能使用。
+   类型 管脚定义 传输速度     QSPI Flash SCLK, CS, IO0, IO1, IO2, IO3 480Mbits/s      使用QSPI Flash烧录器烧录需要配置QE=1，并且勾选写入配置进行烧录。以IS25LP016D型号FLASH为例，其QSPI烧录步骤如下截图：（区分于SPI Flash,SPI Flash不需要勾选写入配置，即截图步骤5勾选为空）</description>
+      </item>
+      
+      <item>
+        <title>PXUA-XU316-KIT_项目导入</title>
+        <link>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5/</link>
+        <pubDate>Thu, 25 Mar 2021 14:07:59 +0900</pubDate>
+        
+        <guid>https://docs.pawpaw.ltd/docs/pxua_xu316_kit/pxua-xu316-kit%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5/</guid>
+        <description>概要 XU316-1024-QF60B-PP24是XMOS最新发布的XCORE.AI系列的芯片，28nm的工艺制程，对比XMOS早期XS1,XCORE-200芯片，XU316不仅在工艺制程和芯片整体性能上面有较大的提升，而且在价格方面也有相当大的优势。因此使用XU316来替代XU208和XU216是一个非常不错的选择。使用XU316-1024-QF60B-PP24（后面统称XU316）作为USB Audio方案的主控，需要了解硬件设计和软件设计，结合木瓜已有固件，搭配PXUA-XU316-KIT评估板使用。根据我司现有的XMOS USB Audio方案，可以使用XU316来做HIFI声卡，专业录音声卡，MIDI声卡，多通道等应用。
+XU316项目导入前，根据下文的描述需要针对以下几点来进行XMOS芯片项目导入：
+ 用户需要梳理方案的应用场景(本文档) 已拥有PXUA-XU316-KIT评估板并且已经查阅了PXUA-XU316-KIT_硬件使用 USB Audio功能需求的确定 XU316固件的获取，烧录和更新 USB Audio ASIO 低延时驱动的获取（针对Windows系统）  XU316应用框架确定 针对XMOS USB Audio方案应用中，需要基本了解XU316 USB Audio方案的应用场景，一般会应用到如下几个应用场景，其中包括但不限于：USB HiFi声卡，专业录音声卡，USB多通道声卡等应用，用户需要根据需求来选择对应的应用框架进行项目导入
+Hi-Res|USB Audio方案 方案背景 追求最真实的播放音质是HiFi音频领域不断发展的方向，往往由数字音频转换到模拟声音的时候，需要更高和更多数据量的传输才能更加有效还原真实的模拟声音。在Hi-Res高端播放设备中，需要支持更高采样率类如384KHz/768KHz的传输，才能携带更加丰满的频谱信息，携带更加宽广的动态范围（dynamic range），更高的信噪比（SNR）和失真度（THD）。
+由于市面上众多的终端设备类如手机和PC电脑内置的声卡没有集成Hi-Res声卡，使用USB Audio进行扩展声卡将是追求HiFi音频播放的最优选择。 HiFi USB Audio 方案实现USB UAC2.0协议异步传输高清码率音频，实现高达768KHz PCM 和DSD 512音频解码，实现准时的，bit-perfect的音频解析，实现HiFi音频消费者对高保真无损播放设备的需求。
+产品形态 方案框图 方案框图主要包含：
+  XU316最小系统设计
+ 3.3V/1.8V/0.9V供电 24MHz无源晶振起振 16Mbit QSPI Flash用于存储程序    外围设计
+ 45.1584MHz和49.152MHz音频晶振提供给XU316作为时钟参考产生I2S时序对应的BCLK,LRCLK 45.1584MHz和49.152MHz音频晶振同时提供给DAC作为MCLK ( 部分DAC需另外外接一个MCLK时钟 ) 提供一路I2S/DSD信号输出给后级DAC解码 提供一路SPDIF信号输出 USB接口用于连接USB HOST主机 UART: 用于发送音频状态信息，如采样率信息，音频状态指示(框图未标出UART，如需UART可在硬件设计时添加)    接口参数   Audio：</description>
+      </item>
+      
+    
+  </channel>
+</rss>
